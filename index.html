@@ -20,7 +20,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 /* ── Header ── */
 .header{position:sticky;top:0;z-index:100;background:rgba(13,27,42,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
-.header-logo{font-weight:700;font-size:1.05rem;color:var(--accent);letter-spacing:.02em;text-decoration:none}
+.header-logo{display:flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.05rem;color:var(--text-primary);letter-spacing:.02em;text-decoration:none}
+.header-logo svg{height:30px;width:auto}
 .header-nav{display:flex;gap:1.6rem;align-items:center}
 .header-nav a{color:var(--text-secondary);text-decoration:none;font-size:.88rem;transition:color .2s}
 .header-nav a:hover{color:var(--text-primary)}
@@ -122,7 +123,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <!-- ── Header ── -->
 <header class="header">
   <div class="header-inner">
-    <a href="#hero" class="header-logo">Черкасов Антон</a>
+    <a href="#hero" class="header-logo">
+      <svg viewBox="0 0 56 34"><rect width="56" height="34" rx="5" fill="#152032"/><circle cx="9" cy="8" r="2.2" fill="#ff5f57"/><circle cx="15" cy="8" r="2.2" fill="#febc2e"/><circle cx="21" cy="8" r="2.2" fill="#27c93d"/><path d="M8 20l6 5-6 5" fill="#00e6c7"/><text x="17" y="26" dominant-baseline="middle" font-family="'SF Mono','Fira Code',monospace" font-size="11" font-weight="bold" fill="#00e6c7">ac</text></svg>
+      <span data-i18n="logo_name">Черкасов Антон</span>
+    </a>
     <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.header-nav').classList.toggle('open')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
     </button>
@@ -335,6 +339,7 @@ const i18n = {
     nav_experience: 'Опыт работы',
     nav_skills: 'Навыки',
     nav_education: 'Образование',
+    logo_name: 'Черкасов Антон',
     hero_name: 'Черкасов Антон',
     hero_title: 'Lead DevOps / SRE Engineer',
     hero_tagline: '15+ лет опыта в построении надёжной инфраструктуры и автоматизации',
@@ -410,6 +415,7 @@ const i18n = {
     nav_experience: 'Experience',
     nav_skills: 'Skills',
     nav_education: 'Education',
+    logo_name: 'Anton Cherkasov',
     hero_name: 'Anton Cherkasov',
     hero_title: 'Lead DevOps / SRE Engineer',
     hero_tagline: '15+ years of experience building reliable infrastructure and automation',
