@@ -1,282 +1,487 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anton Cherkasov — Lead DevOps / SRE</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anton Cherkasov — Lead DevOps / SRE</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg-primary:#0d1b2a;--bg-secondary:#1b2838;--bg-card:#152032;
+  --accent:#00e6c7;--accent-dim:rgba(0,230,199,.12);
+  --text-primary:#e0e6ed;--text-secondary:#8892a0;--text-muted:#5a6474;
+  --border:rgba(255,255,255,.06);--radius:10px;
+  --font-mono:'SF Mono','Fira Code',monospace;
+}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.65;-webkit-font-smoothing:antialiased}
+
+/* ── Header ── */
+.header{position:sticky;top:0;z-index:100;background:rgba(13,27,42,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.header-logo{font-weight:700;font-size:1.05rem;color:var(--accent);letter-spacing:.02em;text-decoration:none}
+.header-nav{display:flex;gap:1.6rem;align-items:center}
+.header-nav a{color:var(--text-secondary);text-decoration:none;font-size:.88rem;transition:color .2s}
+.header-nav a:hover{color:var(--text-primary)}
+.lang-toggle{background:var(--accent-dim);border:1px solid rgba(0,230,199,.25);color:var(--accent);padding:4px 14px;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:var(--font-mono);transition:all .2s}
+.lang-toggle:hover{background:rgba(0,230,199,.22)}
+
+/* ── Sections ── */
+.section{padding:5rem 2rem}
+.section:nth-child(even){background:var(--bg-secondary)}
+.container{max-width:960px;margin:0 auto}
+.section-title{font-size:1.6rem;font-weight:700;margin-bottom:2.4rem;color:var(--text-primary);position:relative;display:inline-block}
+.section-title::after{content:'';display:block;width:48px;height:3px;background:var(--accent);border-radius:2px;margin-top:.5rem}
+
+/* ── Hero ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:6rem 2rem 4rem}
+.hero .container{text-align:center}
+.hero-name{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.3rem;background:linear-gradient(135deg,var(--text-primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title{font-size:clamp(1.1rem,3vw,1.5rem);color:var(--accent);font-weight:600;margin-bottom:.8rem;font-family:var(--font-mono)}
+.hero-tagline{font-size:clamp(.95rem,2vw,1.15rem);color:var(--text-secondary);max-width:540px;margin:0 auto 2.4rem}
+.hero-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-link{display:inline-flex;align-items:center;gap:.45rem;color:var(--accent);text-decoration:none;font-size:.92rem;padding:.5rem 1.1rem;border:1px solid rgba(0,230,199,.2);border-radius:8px;transition:all .25s}
+.hero-link:hover{background:var(--accent-dim);border-color:var(--accent)}
+.hero-link svg{width:18px;height:18px;flex-shrink:0}
+
+/* ── About ── */
+.about-text{font-size:1.05rem;color:var(--text-secondary);max-width:720px;line-height:1.75}
+.about-stats{display:flex;gap:2.4rem;margin-top:2rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:1.8rem;font-weight:800;color:var(--accent);font-family:var(--font-mono)}
+.stat-label{font-size:.78rem;color:var(--text-muted);margin-top:.2rem;text-transform:uppercase;letter-spacing:.06em}
+
+/* ── Timeline ── */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:5px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--text-muted))}
+.tl-item{position:relative;margin-bottom:2.4rem;padding-left:1.6rem}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-2rem;top:.35rem;width:12px;height:12px;border-radius:50%;background:var(--bg-primary);border:2px solid var(--accent)}
+.tl-header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.4rem;margin-bottom:.3rem}
+.tl-role{font-size:1.1rem;font-weight:700;color:var(--text-primary)}
+.tl-company{color:var(--accent);font-family:var(--font-mono);font-size:.85rem;font-weight:600}
+.tl-period{font-size:.82rem;color:var(--text-muted);font-family:var(--font-mono)}
+.tl-bullets{list-style:none;padding:0;margin-top:.6rem}
+.tl-bullets li{position:relative;padding-left:1.1rem;color:var(--text-secondary);font-size:.93rem;margin-bottom:.35rem;line-height:1.55}
+.tl-bullets li::before{content:'▸';color:var(--accent);position:absolute;left:0;font-size:.85rem}
+
+/* ── Skills ── */
+.skills-grid{display:grid;gap:1.6rem}
+.skill-group h3{font-size:.92rem;color:var(--text-primary);margin-bottom:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.badges{display:flex;flex-wrap:wrap;gap:.5rem}
+.badge{background:var(--accent-dim);color:var(--accent);padding:.35rem .85rem;border-radius:6px;font-size:.85rem;font-family:var(--font-mono);border:1px solid rgba(0,230,199,.15);transition:all .2s}
+.badge:hover{background:rgba(0,230,199,.22);border-color:var(--accent)}
+
+/* ── Education ── */
+.edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.6rem;margin-bottom:1.2rem}
+.edu-card:last-child{margin-bottom:0}
+.edu-degree{font-weight:700;font-size:1.05rem;color:var(--text-primary)}
+.edu-school{color:var(--accent);font-family:var(--font-mono);font-size:.88rem;margin-top:.2rem}
+.edu-year{color:var(--text-muted);font-size:.82rem;font-family:var(--font-mono);margin-top:.15rem}
+
+/* ── Footer ── */
+.footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:.82rem}
+
+/* ── Animations ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── Mobile nav toggle ── */
+.nav-toggle{display:none;background:none;border:none;color:var(--text-primary);cursor:pointer;padding:.3rem}
+.nav-toggle svg{width:24px;height:24px}
+
+@media(max-width:768px){
+  .header-nav{position:fixed;top:56px;right:-100%;flex-direction:column;background:var(--bg-secondary);border-left:1px solid var(--border);padding:1.2rem 1.6rem;gap:1rem;width:200px;transition:right .3s ease}
+  .header-nav.open{right:0}
+  .nav-toggle{display:block}
+  .section{padding:3.5rem 1.4rem}
+  .hero{min-height:90vh;padding:5rem 1.4rem 3rem}
+  .about-stats{gap:1.6rem}
+  .tl-header{flex-direction:column;align-items:flex-start}
+  .timeline{padding-left:1.4rem}
+  .skills-grid{grid-template-columns:1fr!important}
+}
+
+@media(min-width:769px){
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
 </head>
 <body>
-  <!-- Language Switcher -->
-  <div class="lang-switch">
-    <button class="lang-btn active" data-lang="ru">RU</button>
-    <span class="lang-sep"></span>
-    <button class="lang-btn" data-lang="en">EN</button>
+
+<!-- ── Header ── -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#hero" class="header-logo">&lt;AC/&gt;</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.header-nav').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <nav class="header-nav">
+      <a href="#about" data-i18n="nav_about">О себе</a>
+      <a href="#experience" data-i18n="nav_experience">Опыт</a>
+      <a href="#skills" data-i18n="nav_skills">Навыки</a>
+      <a href="#education" data-i18n="nav_education">Образование</a>
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">RU / EN</button>
+    </nav>
   </div>
+</header>
 
-  <!-- Header / Hero -->
-  <header class="hero">
-    <div class="container">
-      <h1 class="hero-name">
-        <span data-ru="Черкасов Антон Сергеевич" data-en="Anton Cherkasov"></span>
-      </h1>
-      <p class="hero-title">
-        <span data-ru="Lead DevOps / SRE" data-en="Lead DevOps / SRE"></span>
-      </p>
-      <div class="hero-meta">
-        <span class="hero-location">
-          <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          <span data-ru="Алматы" data-en="Almaty"></span>
-        </span>
-        <span class="hero-contact">
-          <a href="mailto:otherot@gmail.com">
-            <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            otherot@gmail.com
-          </a>
-        </span>
-        <span class="hero-contact">
-          <a href="https://t.me/otherot" target="_blank" rel="noopener">
-            <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M9.78 15.83L10.28 12.6L15.78 9.6L12.68 4.08c-.23-.36-.1-.71.3-.87l.44-.14a.78.78 0 01.87.31l5.68 8.34c.2.3.12.69-.22.87L10.2 19.12c-.32.16-.6.03-.72-.24l-.7-3.05z"/></svg>
-            @otherot
-          </a>
-        </span>
-      </div>
+<!-- ── Hero ── -->
+<section class="hero" id="hero">
+  <div class="container reveal">
+    <h1 class="hero-name" data-i18n="hero_name">Черкасов Антон</h1>
+    <p class="hero-title" data-i18n="hero_title">Lead DevOps / SRE Engineer</p>
+    <p class="hero-tagline" data-i18n="hero_tagline">15+ лет опыта в построении надёжной инфраструктуры и автоматизации</p>
+    <div class="hero-links">
+      <a href="mailto:otherot@gmail.com" class="hero-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L10 13L2 4"/></svg>
+        <span>otherot@gmail.com</span>
+      </a>
+      <a href="https://t.me/otherot" class="hero-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.94 2C6.47 2 2 6.47 2 11.99c0 3.51 1.77 6.58 4.48 8.4l.5-2.72.96-13.38 8.12 9.16c1.74-.72 3.44-2.08 4.46-4.46C22.06 11.99 22 6.47 11.94 2zM15.5 10.5l-1.27-1.36c-.16-.18-.33-.38-.13-.6l2.28-2.64c.16-.17.38-.22.58-.12l3.9 1.52c.4.16.48.46.32.76l-5.08 9.12c-.2.32-.52.4-.8.22l-2.3-1.72-1.12-1.12c-.48-.48-.28-1.08.24-1.44l2.62-1.92z"/></svg>
+        <span>@otherot</span>
+      </a>
+      <a href="tel:+79264968426" class="hero-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v5a1 1 0 01-1.3.95l-4.12-1.28a1 1 0 01-.56-.56l-.78-2.36a14.3 14.3 0 01-7.14-7.14l-2.36-.78A1 1 0 014 5.4v5a16.9 16.9 0 009.1 9.1l5-5a1 1 0 011.4 0z"/></svg>
+        <span data-i18n="hero_phone">+7 (926) 496-84-26</span>
+      </a>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- About -->
-  <section class="section" id="about">
-    <div class="container">
-      <h2 class="section-title">
-        <span data-ru="Обо мне" data-en="About"></span>
-      </h2>
-      <p class="about-text" data-ru="Более 15 лет опыта в IT. Руководжу командой DevOps/SRE инженеров в Сбере. Специализируюсь на построении отказоустойчивой инфраструктуры, автоматизации процессов разработки и развёртывания, а также на обеспечении высокой доступности сервисов (SLA 99.95%). Имею опыт интеграции AI/ML-нагрузок в производственные среды." data-en="Over 15 years of IT experience. Leading a DevOps/SRE team at Sber. Specializing in building resilient infrastructure, automating development and deployment processes, and ensuring high service availability (SLA 99.95%). Experienced in integrating AI/ML workloads into production environments."></span>
-      </p>
+<!-- ── About ── -->
+<section class="section" id="about">
+  <div class="container reveal">
+    <h2 class="section-title" data-i18n="nav_about">О себе</h2>
+    <p class="about-text" data-i18n="about_text"></p>
+    <div class="about-stats">
+      <div class="stat"><div class="stat-num" data-i18n="stat_exp">15+</div><div class="stat-label" data-i18n="stat_exp_label">лет опыта</div></div>
+      <div class="stat"><div class="stat-num" data-i18n="stat_roles">6</div><div class="stat-label" data-i18n="stat_roles_label">ролей</div></div>
+      <div class="stat"><div class="stat-num" data-i18n="stat_team">~10</div><div class="stat-label" data-i18n="stat_team_label">человек в команде</div></div>
+      <div class="stat"><div class="stat-num" data-i18n="stat_sla">99.95%</div><div class="stat-label" data-i18n="stat_sla_label">SLA СБОЛ</div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Experience -->
-  <section class="section section--alt" id="experience">
-    <div class="container">
-      <h2 class="section-title">
-        <span data-ru="Опыт работы" data-en="Experience"></span>
-      </h2>
+<!-- ── Experience ── -->
+<section class="section" id="experience">
+  <div class="container reveal">
+    <h2 class="section-title" data-i18n="nav_experience">Опыт работы</h2>
+    <div class="timeline">
 
-      <!-- Сбер -->
-      <div class="exp-card">
-        <div class="exp-header">
-          <div class="exp-company">
-            <h3 data-ru="Сбер" data-en="Sber"></h3>
-            <span class="exp-role" data-ru="TeamLead DevOps" data-en="TeamLead DevOps"></span>
-          </div>
-          <div class="exp-period">
-            <span data-ru="Июн 2021 — наст. время (4 г. 11 мес.)" data-en="Jun 2021 — Present (4 yrs 11 mos)"></span>
-          </div>
+      <!-- Sber: Team Lead DevOps -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span><span class="tl-role" data-i18n="exp1_role">Team Lead DevOps</span> · <span class="tl-company" data-i18n="exp1_company">Сбер</span></span>
+          <span class="tl-period" data-i18n="exp1_period">ноябрь 2024 — н.в.</span>
         </div>
-        <div class="exp-details">
-          <p data-ru="Сопровождение проекта СБОЛ (Сбербанк онлайн, основное приложение, экосистемы СБЕР), включает полный цикл от пилотных проектов до промышленной эксплуатации в условиях высокой нагрузки и доступности (SLA 99.95%). Поддержка новых и существующих функций продукта. Интеграция технологий искусственного интеллекта в SBOL, таких как ИИ-помощник на базе GigaChat." data-en="Supporting the SBOL project (Sberbank Online — main app and SBER ecosystem), covering the full lifecycle from pilot projects to production deployment under high load and availability conditions (SLA 99.95%). Supporting both new features and existing product functionality. Integrating AI technologies into SBOL, including an AI assistant based on GigaChat."></p>
-          <ul class="exp-bullets">
-            <li data-ru="Руководство командой DevOps/SRE: распределение задач, 1-on-1, код-ревью, менторинг" data-en="Leading a DevOps/SRE team: task distribution, 1-on-1s, code review, mentoring"></li>
-            <li data-ru="Управление кластерами Kubernetes (OpenShift); развёртывание и масштабирование микросервисных приложений, включая поддержку GPU-узлов для ML/AI-нагрузок" data-en="Managing Kubernetes clusters (OpenShift); deploying and scaling microservice applications, including GPU node support for ML/AI workloads"></li>
-            <li data-ru="Автоматизация процессов разработки, сборки и развёртывания ПО (Jenkins, ArgoCD, Helm)" data-en="Automating development, build, and deployment processes (Jenkins, ArgoCD, Helm)"></li>
-            <li data-ru="Настройка облачных сервисов для развёртывания и масштабирования инфраструктуры (Terraform, Ansible)" data-en="Configuring cloud services for application and infrastructure deployment and scaling (Terraform, Ansible)"></li>
-            <li data-ru="Настройка мониторинга продуктов (Prometheus, Grafana, Thanos)" data-en="Setting up product monitoring (Prometheus, Grafana, Thanos)"></li>
-            <li data-ru="Создание отказоустойчивой системы логирования для сервисов и инфраструктуры (ELK/OpenSearch)" data-en="Building a fault-tolerant logging system for services and infrastructure (ELK/OpenSearch)"></li>
-            <li data-ru="Взаимодействие с командами разработки, QA и безопасности для обеспечения надёжности релизного процесса" data-en="Collaborating with development, QA, and security teams to ensure release reliability"></li>
-            <li data-ru="Проведение разбора инцидентов (post-mortem), внедрение мер по снижению MTTR и повышению отказоустойчивости" data-en="Conducting incident post-mortems, implementing measures to reduce MTTR and improve resilience"></li>
-          </ul>
-        </div>
+        <ul class="tl-bullets">
+          <li data-i18n="exp1_b1"></li>
+          <li data-i18n="exp1_b2"></li>
+          <li data-i18n="exp1_b3"></li>
+          <li data-i18n="exp1_b4"></li>
+          <li data-i18n="exp1_b5"></li>
+        </ul>
       </div>
 
-      <!-- Децима -->
-      <div class="exp-card">
-        <div class="exp-header">
-          <div class="exp-company">
-            <h3 data-ru="ООО &laquo;Децима&raquo;" data-en="Decima LLC"></h3>
-            <span class="exp-role" data-ru="Системный администратор" data-en="System Administrator"></span>
-          </div>
-          <div class="exp-period">
-            <span data-ru="Окт 2013 — Июн 2021 (7 г. 9 мес.)" data-en="Oct 2013 — Jun 2021 (7 yrs 9 mos)"></span>
-          </div>
+      <!-- Sber: Senior DevOps -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span><span class="tl-role" data-i18n="exp2_role">Senior DevOps</span> · <span class="tl-company" data-i18n="exp2_company">Сбер</span></span>
+          <span class="tl-period" data-i18n="exp2_period">декабрь 2021 — ноябрь 2024</span>
         </div>
-        <div class="exp-details">
-          <p data-ru="Поддержка IT-инфраструктуры компании: 20+ серверов (Windows Server, Ubuntu/CentOS, Hyper-V, VMware ESXi), решения на базе Microsoft (AD, Exchange, SharePoint, TFS, WSUS, MS SQL). Настройка Linux-сервисов: Postfix, KVM, Docker, Ansible, Kubernetes, Squid, Asterisk, MySQL, PostgreSQL, Zabbix. Скрипты автоматизации на Bash, PowerShell. Программы на Python. Развёртывание Kaspersky Security Center. Настройка сетевого оборудования (HP, D-Link, MikroTik, Ubiquiti). 100+ рабочих мест." data-en="Company IT infrastructure support: 20+ servers (Windows Server, Ubuntu/CentOS, Hyper-V, VMware ESXi), Microsoft-based solutions (AD, Exchange, SharePoint, TFS, WSUS, MS SQL). Linux services configuration: Postfix, KVM, Docker, Ansible, Kubernetes, Squid, Asterisk, MySQL, PostgreSQL, Zabbix. Automation scripts in Bash and PowerShell. Python applications. Deployed Kaspersky Security Center. Network equipment setup (HP, D-Link, MikroTik, Ubiquiti). 100+ workstations."></p>
-        </div>
+        <ul class="tl-bullets">
+          <li data-i18n="exp2_b1"></li>
+          <li data-i18n="exp2_b2"></li>
+          <li data-i18n="exp2_b3"></li>
+          <li data-i18n="exp2_b4"></li>
+          <li data-i18n="exp2_b5"></li>
+          <li data-i18n="exp2_b6"></li>
+        </ul>
       </div>
 
-      <!-- МГОУ -->
-      <div class="exp-card">
-        <div class="exp-header">
-          <div class="exp-company">
-            <h3 data-ru="Московский государственный областной университет" data-en="Moscow State Regional University"></h3>
-            <span class="exp-role" data-ru="Программист отдела телекоммуникаций" data-en="Telecommunications Programmer"></span>
-          </div>
-          <div class="exp-period">
-            <span data-ru="Ноя 2011 — Фев 2013 (1 г. 4 мес.)" data-en="Nov 2011 — Feb 2013 (1 yr 4 mos)"></span>
-          </div>
+      <!-- Sber: Middle DevOps -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span><span class="tl-role" data-i18n="exp3_role">Middle DevOps</span> · <span class="tl-company" data-i18n="exp3_company">Сбер</span></span>
+          <span class="tl-period" data-i18n="exp3_period">июнь 2021 — декабрь 2021</span>
         </div>
-        <div class="exp-details">
-          <p data-ru="Обслуживание и настройка сетевого оборудования Cisco, IP-телефонии (Cisco Call Manager). Поддержка работы сети, ввод в эксплуатацию серверных платформ Microsoft. Настройка рабочих станций в доменной сети Active Directory (~1000 машин на нескольких удалённых сайтах через VPN). Прокладка сетевых линий, монтаж оборудования, поддержка пользователей." data-en="Maintenance and configuration of Cisco network equipment, IP telephony (Cisco Call Manager). Network support, commissioning Microsoft server platforms. Workstation configuration in Active Directory domain (~1000 machines across multiple remote sites via VPN). Cable installation, equipment mounting, user support."></p>
-        </div>
+        <ul class="tl-bullets">
+          <li data-i18n="exp3_b1"></li>
+          <li data-i18n="exp3_b2"></li>
+          <li data-i18n="exp3_b3"></li>
+          <li data-i18n="exp3_b4"></li>
+        </ul>
       </div>
 
-      <!-- МГОУ (ранее) -->
-      <div class="exp-card">
-        <div class="exp-header">
-          <div class="exp-company">
-            <h3 data-ru="Московский государственный областной университет" data-en="Moscow State Regional University"></h3>
-            <span class="exp-role" data-ru="Техник отдела ресурсного обеспечения" data-en="Resource Support Technician"></span>
-          </div>
-          <div class="exp-period">
-            <span data-ru="Мар 2010 — Ноя 2011 (1 г. 9 мес.)" data-en="Mar 2010 — Nov 2011 (1 yr 9 mos)"></span>
-          </div>
+      <!-- Decima -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span><span class="tl-role" data-i18n="exp4_role">Системный администратор</span> · <span class="tl-company" data-i18n="exp4_company">ООО «Децима»</span></span>
+          <span class="tl-period" data-i18n="exp4_period">октябрь 2013 — июнь 2021</span>
         </div>
-        <div class="exp-details">
-          <p data-ru="Обслуживание компьютеров и периферийного оборудования, текущий ремонт, настройка рабочих станций, установка ПО, обустройство новых рабочих мест." data-en="Computer and peripheral equipment maintenance, repairs, workstation configuration, software installation, setting up new workspaces."></p>
-        </div>
+        <ul class="tl-bullets">
+          <li data-i18n="exp4_b1"></li>
+          <li data-i18n="exp4_b2"></li>
+          <li data-i18n="exp4_b3"></li>
+          <li data-i18n="exp4_b4"></li>
+          <li data-i18n="exp4_b5"></li>
+        </ul>
       </div>
+
+      <!-- MSU: Programmer -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span><span class="tl-role" data-i18n="exp5_role">Программист отдела телекоммуникаций</span> · <span class="tl-company" data-i18n="exp5_company">МГОУ</span></span>
+          <span class="tl-period" data-i18n="exp5_period">ноябрь 2011 — февраль 2013</span>
+        </div>
+        <ul class="tl-bullets">
+          <li data-i18n="exp5_b1"></li>
+          <li data-i18n="exp5_b2"></li>
+        </ul>
+      </div>
+
+      <!-- MSU: Technician -->
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span><span class="tl-role" data-i18n="exp6_role">Техник отдела ресурсного обеспечения</span> · <span class="tl-company" data-i18n="exp6_company">МГОУ</span></span>
+          <span class="tl-period" data-i18n="exp6_period">март 2010 — ноябрь 2011</span>
+        </div>
+        <ul class="tl-bullets">
+          <li data-i18n="exp6_b1"></li>
+        </ul>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Skills -->
-  <section class="section" id="skills">
-    <div class="container">
-      <h2 class="section-title">
-        <span data-ru="Навыки" data-en="Skills"></span>
-      </h2>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h3 data-ru="Инфраструктура &amp; DevOps" data-en="Infrastructure &amp; DevOps"></h3>
-          <div class="skill-tags">
-            <span class="tag">Linux</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Kubernetes</span>
-            <span class="tag">OpenShift</span>
-            <span class="tag">Jenkins</span>
-            <span class="tag">ArgoCD</span>
-            <span class="tag">Helm</span>
-            <span class="tag">Terraform</span>
-            <span class="tag">Ansible</span>
-            <span class="tag">CI/CD</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3 data-ru="Мониторинг &amp; Логирование" data-en="Monitoring &amp; Logging"></h3>
-          <div class="skill-tags">
-            <span class="tag">Prometheus</span>
-            <span class="tag">Grafana</span>
-            <span class="tag">Thanos</span>
-            <span class="tag">ELK Stack</span>
-            <span class="tag">Elasticsearch</span>
-            <span class="tag">Kibana</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3 data-ru="Базы данных &amp; Очереди" data-en="Databases &amp; Message Queues"></h3>
-          <div class="skill-tags">
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Kafka</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3 data-ru="Языки &amp; Скрипты" data-en="Languages &amp; Scripting"></h3>
-          <div class="skill-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Bash</span>
-            <span class="tag">Git</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3 data-ru="Дополнительно" data-en="Additional"></h3>
-          <div class="skill-tags">
-            <span class="tag">Highload</span>
-            <span class="tag">GPU/ML Workloads</span>
-            <span class="tag">Incident Management</span>
-          </div>
-        </div>
-      </div>
+<!-- ── Skills ── -->
+<section class="section" id="skills">
+  <div class="container reveal">
+    <h2 class="section-title" data-i18n="nav_skills">Навыки</h2>
+    <div class="skills-grid">
+      <div class="skill-group"><h3 data-i18n="skl_orch_title">Оркестрация</h3><div class="badges"><span class="badge">Kubernetes</span><span class="badge">OpenShift</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_cicd_title">CI / CD</h3><div class="badges"><span class="badge">Jenkins</span><span class="badge">ArgoCD</span><span class="badge">Helm</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_iac_title">Infrastructure as Code</h3><div class="badges"><span class="badge">Terraform</span><span class="badge">Ansible</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_mon_title">Мониторинг</h3><div class="badges"><span class="badge">Prometheus</span><span class="badge">Grafana</span><span class="badge">Thanos</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_log_title">Логирование</h3><div class="badges"><span class="badge">ELK</span><span class="badge">OpenSearch</span><span class="badge">Kibana</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_lang_title">Языки программирования</h3><div class="badges"><span class="badge">Python</span><span class="badge">Bash</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_db_title">Базы данных</h3><div class="badges"><span class="badge">PostgreSQL</span><span class="badge">MySQL</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_other_title">Прочее</h3><div class="badges"><span class="badge">Docker</span><span class="badge">Kafka</span><span class="badge">Git</span><span class="badge">Elasticsearch</span></div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Education -->
-  <section class="section section--alt" id="education">
-    <div class="container">
-      <h2 class="section-title">
-        <span data-ru="Образование" data-en="Education"></span>
-      </h2>
-      <div class="edu-card">
-        <h3 data-ru="Московский государственный областной университет" data-en="Moscow State Regional University"></h3>
-        <p class="edu-year">2013</p>
-        <p class="edu-degree" data-ru="Магистр, Физико-математический. Информатика и вычислительная техника" data-en="Master's Degree, Physics &amp; Mathematics. Computer Science and Computing Technology"></p>
-      </div>
+<!-- ── Education ── -->
+<section class="section" id="education">
+  <div class="container reveal">
+    <h2 class="section-title" data-i18n="nav_education">Образование и курсы</h2>
+    <div class="edu-card">
+      <div class="edu-degree" data-i18n="edu1_degree"></div>
+      <div class="edu-school" data-i18n="edu1_school"></div>
+      <div class="edu-year" data-i18n="edu1_year"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Certificates -->
-  <section class="section" id="certificates">
-    <div class="container">
-      <h2 class="section-title">
-        <span data-ru="Сертификаты" data-en="Certifications"></span>
-      </h2>
-      <div class="certs-grid">
-        <div class="cert-card">
-          <h3>GeekBrains (2020)</h3>
-          <ul class="cert-list">
-            <li data-ru="Администрирование серверов Linux" data-en="Linux Server Administration"></li>
-            <li data-ru="Безопасность проводных и беспроводных сетей" data-en="Wired and Wireless Network Security"></li>
-            <li data-ru="Интенсив &laquo;Python для начинающих&raquo;" data-en="Intensive: Python for Beginners"></li>
-            <li data-ru="Операционные системы" data-en="Operating Systems"></li>
-            <li data-ru="Основы баз данных" data-en="Database Fundamentals"></li>
-            <li data-ru="Основы языка Python" data-en="Python Language Basics"></li>
-            <li data-ru="Системный администратор: стажировка" data-en="System Administrator: Internship"></li>
-          </ul>
-        </div>
-        <div class="cert-card">
-          <h3>Yandex Practicum (2019)</h3>
-          <ul class="cert-list">
-            <li data-ru="Linux. Уровень 1" data-en="Linux Level 1"></li>
-            <li data-ru="Linux. Уровень 1. Администрирование рабочих станций" data-en="Linux Level 1 — Workstation Administration"></li>
-            <li data-ru="Компьютерные сети" data-en="Computer Networks"></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ── Footer ── -->
+<footer class="footer">
+  <p data-i18n="footer_text">© 2025 Черкасов Антон. Lead DevOps / SRE</p>
+</footer>
 
-  <!-- Languages -->
-  <section class="section section--alt" id="languages">
-    <div class="container">
-      <h2 class="section-title">
-        <span data-ru="Языки" data-en="Languages"></span>
-      </h2>
-      <div class="langs-row">
-        <div class="lang-card">
-          <span class="lang-name" data-ru="Русский" data-en="Russian"></span>
-          <span class="lang-level" data-ru="Родной" data-en="Native"></span>
-        </div>
-        <div class="lang-card">
-          <span class="lang-name" data-ru="Английский" data-en="English"></span>
-          <span class="lang-level" data-ru="B2 — Средне-продвинутый" data-en="B2 — Upper-Intermediate"></span>
-        </div>
-      </div>
-    </div>
-  </section>
+<script>
+const i18n = {
+  ru: {
+    nav_about: 'О себе',
+    nav_experience: 'Опыт работы',
+    nav_skills: 'Навыки',
+    nav_education: 'Образование',
+    hero_name: 'Черкасов Антон',
+    hero_title: 'Lead DevOps / SRE Engineer',
+    hero_tagline: '15+ лет опыта в построении надёжной инфраструктуры и автоматизации',
+    hero_phone: '+7 (926) 496-84-26',
+    about_text: 'DevOps/SRE-инженер с более чем 15-летним опытом — от системного администрирования до руководства командой DevOps в крупном банке. Специализируюсь на Kubernetes/OpenShift, CI/CD (Jenkins, ArgoCD), Terraform и Ansible. Обеспечиваю SLA 99.95% для высоконагруженных сервисов Сбера, включая СБОЛ и ИИ-ассистент на базе LLM.',
+    stat_exp: '15+',
+    stat_exp_label: 'лет опыта',
+    stat_roles: '6',
+    stat_roles_label: 'ролей',
+    stat_team: '~10',
+    stat_team_label: 'человек в команде',
+    stat_sla: '99.95%',
+    stat_sla_label: 'SLA СБОЛ',
+    exp1_role: 'Team Lead DevOps',
+    exp1_company: 'Сбер',
+    exp1_period: 'ноябрь 2024 — н.в.',
+    exp1_b1: 'Руководство командой DevOps/SRE инженеров (~10 человек): распределение задач, 1-on-1, код-ревью, менторинг',
+    exp1_b2: 'Обеспечение SLA 99.95% для СБОЛ (Сбербанк Онлайн) в условиях высокой нагрузки',
+    exp1_b3: 'Координация с командами разработки, QA и безопасности для надёжности релизного процесса',
+    exp1_b4: 'Сопровождение перехода ИИ-ассистента на архитектуру агентного поиска',
+    exp1_b5: 'Внедрение мер по снижению MTTR и повышению отказоустойчивости',
+    exp2_role: 'Senior DevOps',
+    exp2_company: 'Сбер',
+    exp2_period: 'декабрь 2021 — ноябрь 2024',
+    exp2_b1: 'Самостоятельное проектирование инфраструктурных решений и архитектуры деплоя',
+    exp2_b2: 'Управление кластерами Kubernetes (OpenShift), включая GPU-узлы для ML/AI-нагрузок',
+    exp2_b3: 'Автоматизация CI/CD (Jenkins, ArgoCD, Helm); управление облачной инфраструктурой (Terraform, Ansible)',
+    exp2_b4: 'Разбор сложных инцидентов (post-mortem), снижение MTTR',
+    exp2_b5: 'Участие во внедрении ИИ-ассистента на базе LLM в поисковую систему продукта',
+    exp2_b6: 'Взаимодействие с командами разработки, QA и безопасности',
+    exp3_role: 'Middle DevOps',
+    exp3_company: 'Сбер',
+    exp3_period: 'июнь 2021 — декабрь 2021',
+    exp3_b1: 'Сопровождение и настройка CI/CD пайплайнов (Jenkins)',
+    exp3_b2: 'Развёртывание микросервисных приложений в Kubernetes (OpenShift)',
+    exp3_b3: 'Поддержка мониторинга (Prometheus, Grafana, Thanos) и логирования (ELK/OpenSearch)',
+    exp3_b4: 'Операционная поддержка инфраструктуры в рамках команды',
+    exp4_role: 'Системный администратор',
+    exp4_company: 'ООО «Децима»',
+    exp4_period: 'октябрь 2013 — июнь 2021',
+    exp4_b1: 'Поддержка IT-инфраструктуры: 20+ серверов (Windows Server, Ubuntu, CentOS, Hyper-V, VMware ESXi)',
+    exp4_b2: 'Администрирование решений Microsoft: AD, Exchange, SharePoint, TFS, WSUS, MSSQL',
+    exp4_b3: 'Linux-стек: Postfix, KVM, Docker, Ansible, Kubernetes, MySQL, PostgreSQL, Zabbix',
+    exp4_b4: 'Автоматизация на Bash, PowerShell, Python',
+    exp4_b5: 'Настройка сетевого оборудования (HP, D-Link, MikroTik, Ubiquiti); поддержка 100+ рабочих мест',
+    exp5_role: 'Программист отдела телекоммуникаций',
+    exp5_company: 'МГОУ',
+    exp5_period: 'ноябрь 2011 — февраль 2013',
+    exp5_b1: 'Обслуживание сетевого оборудования Cisco, IP-телефонии (Cisco Call Manager)',
+    exp5_b2: 'Администрирование серверных платформ Microsoft, поддержка ~1000 рабочих станций (VPN, AD)',
+    exp6_role: 'Техник отдела ресурсного обеспечения',
+    exp6_company: 'МГОУ',
+    exp6_period: 'март 2010 — ноябрь 2011',
+    exp6_b1: 'Обслуживание компьютеров и периферийного оборудования, настройка рабочих станций, поддержка пользователей',
+    skl_orch_title: 'Оркестрация',
+    skl_cicd_title: 'CI / CD',
+    skl_iac_title: 'Infrastructure as Code',
+    skl_mon_title: 'Мониторинг',
+    skl_log_title: 'Логирование',
+    skl_lang_title: 'Языки программирования',
+    skl_db_title: 'Базы данных',
+    skl_other_title: 'Прочее',
+    edu1_degree: 'Магистр — Информатика и вычислительная техника',
+    edu1_school: 'Московский государственный областной университет',
+    edu1_year: '2013',
+    footer_text: '© 2025 Черкасов Антон. Lead DevOps / SRE'
+  },
+  en: {
+    nav_about: 'About',
+    nav_experience: 'Experience',
+    nav_skills: 'Skills',
+    nav_education: 'Education',
+    hero_name: 'Anton Cherkasov',
+    hero_title: 'Lead DevOps / SRE Engineer',
+    hero_tagline: '15+ years of experience building reliable infrastructure and automation',
+    hero_phone: '+7 (926) 496-84-26',
+    about_text: 'DevOps/SRE engineer with over 15 years of experience — from system administration to leading a DevOps team at a major bank. Specialized in Kubernetes/OpenShift, CI/CD (Jenkins, ArgoCD), Terraform and Ansible. Ensuring 99.95% SLA for Sberbank\'s high-traffic services including SBOL and an LLM-based AI assistant.',
+    stat_exp: '15+',
+    stat_exp_label: 'years of experience',
+    stat_roles: '6',
+    stat_roles_label: 'roles',
+    stat_team: '~10',
+    stat_team_label: 'team members',
+    stat_sla: '99.95%',
+    stat_sla_label: 'SBOL SLA',
+    exp1_role: 'Team Lead DevOps',
+    exp1_company: 'Sberbank',
+    exp1_period: 'Nov 2024 — present',
+    exp1_b1: 'Leading a team of ~10 DevOps/SRE engineers: task distribution, 1-on-1s, code reviews, mentoring',
+    exp1_b2: 'Ensuring 99.95% SLA for SBOL (Sberbank Online) under high load conditions',
+    exp1_b3: 'Coordinating with development, QA and security teams for reliable release processes',
+    exp1_b4: 'Supporting the AI assistant migration to agent-based search architecture',
+    exp1_b5: 'Implementing measures to reduce MTTR and improve fault tolerance',
+    exp2_role: 'Senior DevOps',
+    exp2_company: 'Sberbank',
+    exp2_period: 'Dec 2021 — Nov 2024',
+    exp2_b1: 'Independent design of infrastructure solutions and deployment architecture',
+    exp2_b2: 'Managing Kubernetes (OpenShift) clusters, including GPU nodes for ML/AI workloads',
+    exp2_b3: 'CI/CD automation (Jenkins, ArgoCD, Helm); cloud infrastructure management (Terraform, Ansible)',
+    exp2_b4: 'Complex incident post-mortems, MTTR reduction',
+    exp2_b5: 'Contributed to LLM-based AI assistant integration into the product search system',
+    exp2_b6: 'Collaboration with development, QA and security teams',
+    exp3_role: 'Middle DevOps',
+    exp3_company: 'Sberbank',
+    exp3_period: 'Jun 2021 — Dec 2021',
+    exp3_b1: 'CI/CD pipeline setup and maintenance (Jenkins)',
+    exp3_b2: 'Deploying microservice applications to Kubernetes (OpenShift)',
+    exp3_b3: 'Monitoring support (Prometheus, Grafana, Thanos) and logging (ELK/OpenSearch)',
+    exp3_b4: 'Operational infrastructure support within the team',
+    exp4_role: 'System Administrator',
+    exp4_company: 'Decima LLC',
+    exp4_period: 'Oct 2013 — Jun 2021',
+    exp4_b1: 'IT infrastructure support: 20+ servers (Windows Server, Ubuntu, CentOS, Hyper-V, VMware ESXi)',
+    exp4_b2: 'Microsoft solutions administration: AD, Exchange, SharePoint, TFS, WSUS, MSSQL',
+    exp4_b3: 'Linux stack: Postfix, KVM, Docker, Ansible, Kubernetes, MySQL, PostgreSQL, Zabbix',
+    exp4_b4: 'Automation with Bash, PowerShell, Python',
+    exp4_b5: 'Network equipment configuration (HP, D-Link, MikroTik, Ubiquiti); support for 100+ workstations',
+    exp5_role: 'Telecommunications Programmer',
+    exp5_company: 'MSRU',
+    exp5_period: 'Nov 2011 — Feb 2013',
+    exp5_b1: 'Cisco network equipment maintenance, IP telephony (Cisco Call Manager)',
+    exp5_b2: 'Microsoft server platform administration, support for ~1000 workstations (VPN, AD)',
+    exp6_role: 'Resource Support Technician',
+    exp6_company: 'MSRU',
+    exp6_period: 'Mar 2010 — Nov 2011',
+    exp6_b1: 'Computer and peripheral equipment maintenance, workstation setup, user support',
+    skl_orch_title: 'Orchestration',
+    skl_cicd_title: 'CI / CD',
+    skl_iac_title: 'Infrastructure as Code',
+    skl_mon_title: 'Monitoring',
+    skl_log_title: 'Logging',
+    skl_lang_title: 'Programming Languages',
+    skl_db_title: 'Databases',
+    skl_other_title: 'Other',
+    edu1_degree: "Master's — Computer Science & Computational Technology",
+    edu1_school: 'Moscow State Regional University (MSRU)',
+    edu1_year: '2013',
+    footer_text: '© 2025 Anton Cherkasov. Lead DevOps / SRE'
+  }
+};
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>
-        <span data-ru="Сайт размещён на GitHub Pages" data-en="Hosted on GitHub Pages"></span>
-      </p>
-      <div class="footer-links">
-        <a href="mailto:otherot@gmail.com" data-ru="Написать на почту" data-en="Email"></a>
-        <span class="dot">&middot;</span>
-        <a href="https://t.me/otherot" target="_blank" rel="noopener">Telegram</a>
-      </div>
-    </div>
-  </footer>
+let currentLang = localStorage.getItem('portfolio-lang') || 'ru';
 
-  <script src="js/lang.js"></script>
+function applyLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'en' ? 'en' : 'ru';
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  localStorage.setItem('portfolio-lang', lang);
+}
+
+function toggleLang() {
+  applyLang(currentLang === 'ru' ? 'en' : 'ru');
+}
+
+// ── Intersection Observer for scroll animations ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Close mobile nav on link click ──
+document.querySelectorAll('.header-nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelector('.header-nav').classList.remove('open');
+  });
+});
+
+// ── Init ──
+applyLang(currentLang);
+</script>
 </body>
 </html>
