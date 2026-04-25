@@ -80,6 +80,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .edu-school{color:var(--accent);font-family:var(--font-mono);font-size:.88rem;margin-top:.2rem}
 .edu-year{color:var(--text-muted);font-size:.82rem;font-family:var(--font-mono);margin-top:.15rem}
 
+/* ── Certificates ── */
+.certs-header{font-size:.95rem;color:var(--text-primary);font-weight:600;margin:1.6rem 0 .8rem;text-transform:uppercase;letter-spacing:.04em}
+.certs-list{list-style:none;padding:0;display:grid;gap:.45rem}
+.certs-list li{display:flex;align-items:center;gap:.5rem}
+.certs-list a{color:var(--accent);text-decoration:none;font-size:.88rem;font-family:var(--font-mono);transition:all .2s;display:flex;align-items:center;gap:.4rem}
+.certs-list a:hover{color:var(--text-primary)}
+.certs-list a::before{content:'→';opacity:0;transform:translateX(-4px);display:inline-block;transition:all .2s;font-size:.75rem}
+.certs-list a:hover::before{opacity:1;transform:translateX(0)}
+
 /* ── Footer ── */
 .footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:.82rem}
 
@@ -285,6 +294,32 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <div class="edu-school" data-i18n="edu1_school"></div>
       <div class="edu-year" data-i18n="edu1_year"></div>
     </div>
+    <div class="edu-card">
+      <div class="edu-degree" data-i18n="edu2_degree"></div>
+      <div class="edu-school" data-i18n="edu2_school"></div>
+      <div class="edu-year" data-i18n="edu2_year"></div>
+    </div>
+    <h3 class="certs-header" data-i18n="cert_header">Сертификаты</h3>
+    <ul class="certs-list" id="certs-ru">
+      <li><a href="https://gb.ru/certificates/661388" target="_blank" rel="noopener">Linux. Уровень 1</a></li>
+      <li><a href="https://gb.ru/certificates/691731" target="_blank" rel="noopener">Компьютерные сети</a></li>
+      <li><a href="https://gb.ru/certificates/713702" target="_blank" rel="noopener">Администрирование серверов Linux</a></li>
+      <li><a href="https://gb.ru/certificates/792885" target="_blank" rel="noopener">Основы баз данных</a></li>
+      <li><a href="https://gb.ru/certificates/901393" target="_blank" rel="noopener">Видеокурс Основы языка Python</a></li>
+      <li><a href="https://gb.ru/certificates/902203" target="_blank" rel="noopener">Python для начинающих</a></li>
+      <li><a href="https://gb.ru/certificates/894822" target="_blank" rel="noopener">Безопасность проводных и беспроводных сетей</a></li>
+      <li><a href="https://gb.ru/certificates/996658" target="_blank" rel="noopener">Итоговый проект</a></li>
+    </ul>
+    <ul class="certs-list" id="certs-en" style="display:none">
+      <li><a href="https://gb.ru/certificates/661388" target="_blank" rel="noopener">Linux Level 1</a></li>
+      <li><a href="https://gb.ru/certificates/691731" target="_blank" rel="noopener">Computer Networks</a></li>
+      <li><a href="https://gb.ru/certificates/713702" target="_blank" rel="noopener">Linux Server Administration</a></li>
+      <li><a href="https://gb.ru/certificates/792885" target="_blank" rel="noopener">Database Fundamentals</a></li>
+      <li><a href="https://gb.ru/certificates/901393" target="_blank" rel="noopener">Python Basics (Video Course)</a></li>
+      <li><a href="https://gb.ru/certificates/902203" target="_blank" rel="noopener">Python for Beginners</a></li>
+      <li><a href="https://gb.ru/certificates/894822" target="_blank" rel="noopener">Network Security</a></li>
+      <li><a href="https://gb.ru/certificates/996658" target="_blank" rel="noopener">Final Project</a></li>
+    </ul>
   </div>
 </section>
 
@@ -364,6 +399,10 @@ const i18n = {
     edu1_degree: 'Магистр — Информатика и вычислительная техника',
     edu1_school: 'Московский государственный областной университет',
     edu1_year: '2013',
+    edu2_degree: 'Бакалавр — Информатика',
+    edu2_school: 'Московский государственный областной университет',
+    edu2_year: '2011',
+    cert_header: 'Сертификаты',
     footer_text: '© 2025 Черкасов Антон. Lead DevOps / SRE'
   },
   en: {
@@ -435,6 +474,10 @@ const i18n = {
     edu1_degree: "Master's — Computer Science & Computational Technology",
     edu1_school: 'Moscow State Regional University (MSRU)',
     edu1_year: '2013',
+    edu2_degree: 'Bachelor — Informatics',
+    edu2_school: 'Moscow State Regional University (MSRU)',
+    edu2_year: '2011',
+    cert_header: 'Certificates',
     footer_text: '© 2025 Anton Cherkasov. Lead DevOps / SRE'
   }
 };
@@ -449,6 +492,12 @@ function applyLang(lang) {
     const key = el.getAttribute('data-i18n');
     if (t[key] !== undefined) el.textContent = t[key];
   });
+  const certsRu = document.getElementById('certs-ru');
+  const certsEn = document.getElementById('certs-en');
+  if (certsRu && certsEn) {
+    certsRu.style.display = lang === 'ru' ? 'grid' : 'none';
+    certsEn.style.display = lang === 'en' ? 'grid' : 'none';
+  }
   localStorage.setItem('portfolio-lang', lang);
 }
 
