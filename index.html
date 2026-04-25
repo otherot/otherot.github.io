@@ -4,11 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anton Cherkasov — Lead DevOps / SRE</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" href="/icons/logo.svg" type="image/svg+xml">
+<link rel="shortcut icon" href="/icons/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/images/logo.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg-primary:#0d1b2a;--bg-secondary:#1b2838;--bg-card:#152032;
+  --bg-primary:#0d1b2a;--bg-secondary:rgba(27,40,56,.85);--bg-card:rgba(21,32,50,.85);
   --accent:#00e6c7;--accent-dim:rgba(0,230,199,.12);
   --text-primary:#e0e6ed;--text-secondary:#8892a0;--text-muted:#5a6474;
   --border:rgba(255,255,255,.06);--radius:10px;
@@ -17,11 +21,15 @@
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.65;-webkit-font-smoothing:antialiased}
 
+/* ── Background texture (dot grid + subtle noise) ── */
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px}
+body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025' fill='%23ffffff'/%3E%3C/svg%3E");background-size:256px 256px;opacity:.45}
+
 /* ── Header ── */
 .header{position:sticky;top:0;z-index:100;background:rgba(13,27,42,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
-.header-logo{display:flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.05rem;color:var(--text-primary);letter-spacing:.02em;text-decoration:none}
-.header-logo svg{height:30px;width:auto}
+.header-logo{display:flex;align-items:center;text-decoration:none}
+.header-logo .icon-logo{height:75px;width:auto;flex-shrink:0}
 .header-nav{display:flex;gap:1.6rem;align-items:center}
 .header-nav a{color:var(--text-secondary);text-decoration:none;font-size:.88rem;transition:color .2s}
 .header-nav a:hover{color:var(--text-primary)}
@@ -36,15 +44,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .section-title::after{content:'';display:block;width:48px;height:3px;background:var(--accent);border-radius:2px;margin-top:.5rem}
 
 /* ── Hero ── */
-.hero{min-height:100vh;display:flex;align-items:center;padding:6rem 2rem 4rem}
-.hero .container{text-align:center}
+.hero{min-height:100vh;display:flex;align-items:center;padding:6rem 2rem 4rem;position:relative}
+.hero::before{content:'';position:absolute;top:15%;left:30%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,230,199,.1) 0%,transparent 70%);pointer-events:none;z-index:0}
+.hero .container{position:relative;z-index:1;text-align:center}
 .hero-name{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.3rem;background:linear-gradient(135deg,var(--text-primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-title{font-size:clamp(1.1rem,3vw,1.5rem);color:var(--accent);font-weight:600;margin-bottom:.8rem;font-family:var(--font-mono)}
 .hero-tagline{font-size:clamp(.95rem,2vw,1.15rem);color:var(--text-secondary);max-width:540px;margin:0 auto 2.4rem}
-.hero-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.hero-link{display:inline-flex;align-items:center;gap:.45rem;color:var(--accent);text-decoration:none;font-size:.92rem;padding:.5rem 1.1rem;border:1px solid rgba(0,230,199,.2);border-radius:8px;transition:all .25s}
+.hero-links{display:flex;gap:.8rem;justify-content:center}
+.hero-link{display:flex;align-items:center;justify-content:center;width:50px;height:50px;text-decoration:none;border:1px solid rgba(0,230,199,.2);border-radius:50%;transition:all .25s}
 .hero-link:hover{background:var(--accent-dim);border-color:var(--accent)}
-.hero-link svg{width:18px;height:18px;flex-shrink:0}
+.icon{width:24px;height:24px;flex-shrink:0;display:block}
+.icon-logo{width:auto;flex-shrink:0;display:inline-block;color:var(--text-primary)}
 
 /* ── About ── */
 .about-text{font-size:1.05rem;color:var(--text-secondary);max-width:720px;line-height:1.75}
@@ -99,7 +109,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 /* ── Mobile nav toggle ── */
 .nav-toggle{display:none;background:none;border:none;color:var(--text-primary);cursor:pointer;padding:.3rem}
-.nav-toggle svg{width:24px;height:24px}
+.nav-toggle .icon{width:24px;height:24px;color:inherit}
 
 @media(max-width:768px){
   .header-nav{position:fixed;top:56px;right:-100%;flex-direction:column;background:var(--bg-secondary);border-left:1px solid var(--border);padding:1.2rem 1.6rem;gap:1rem;width:200px;transition:right .3s ease}
@@ -124,11 +134,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <header class="header">
   <div class="header-inner">
     <a href="#hero" class="header-logo">
-      <svg viewBox="0 0 56 34"><rect width="56" height="34" rx="5" fill="#152032"/><circle cx="9" cy="8" r="2.2" fill="#ff5f57"/><circle cx="15" cy="8" r="2.2" fill="#febc2e"/><circle cx="21" cy="8" r="2.2" fill="#27c93d"/><path d="M8 20l6 5-6 5" fill="#00e6c7"/><text x="17" y="26" dominant-baseline="middle" font-family="'SF Mono','Fira Code',monospace" font-size="11" font-weight="bold" fill="#00e6c7">ac</text></svg>
-      <span data-i18n="logo_name">Черкасов Антон</span>
+      <img src="icons/logo.svg" alt="Logo" class="icon-logo">
     </a>
     <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.header-nav').classList.toggle('open')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      <img src="icons/menu.svg" alt="" class="icon">
     </button>
     <nav class="header-nav">
       <a href="#about" data-i18n="nav_about">О себе</a>
@@ -147,13 +156,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <p class="hero-title" data-i18n="hero_title">Lead DevOps / SRE Engineer</p>
     <p class="hero-tagline" data-i18n="hero_tagline">15+ лет опыта в построении надёжной инфраструктуры и автоматизации</p>
     <div class="hero-links">
-      <a href="mailto:otherot@gmail.com" class="hero-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L10 13L2 4"/></svg>
-        <span>otherot@gmail.com</span>
+      <a href="mailto:otherot@gmail.com" class="hero-link" title="otherot@gmail.com">
+        <img src="icons/mail.svg" alt="" class="icon">
       </a>
-      <a href="https://t.me/otherot" class="hero-link" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.94 2C6.47 2 2 6.47 2 11.99c0 3.51 1.77 6.58 4.48 8.4l.5-2.72.96-13.38 8.12 9.16c1.74-.72 3.44-2.08 4.46-4.46C22.06 11.99 22 6.47 11.94 2zM15.5 10.5l-1.27-1.36c-.16-.18-.33-.38-.13-.6l2.28-2.64c.16-.17.38-.22.58-.12l3.9 1.52c.4.16.48.46.32.76l-5.08 9.12c-.2.32-.52.4-.8.22l-2.3-1.72-1.12-1.12c-.48-.48-.28-1.08.24-1.44l2.62-1.92z"/></svg>
-        <span>@otherot</span>
+      <a href="https://t.me/otherot" class="hero-link" target="_blank" rel="noopener" title="@otherot">
+        <img src="icons/telegram.svg" alt="" class="icon">
       </a>
     </div>
   </div>
@@ -339,7 +346,6 @@ const i18n = {
     nav_experience: 'Опыт работы',
     nav_skills: 'Навыки',
     nav_education: 'Образование',
-    logo_name: 'Черкасов Антон',
     hero_name: 'Черкасов Антон',
     hero_title: 'Lead DevOps / SRE Engineer',
     hero_tagline: '15+ лет опыта в построении надёжной инфраструктуры и автоматизации',
