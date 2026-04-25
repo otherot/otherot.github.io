@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anton Cherkasov — Lead DevOps / SRE</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Language Switcher -->
+  <div class="lang-switch">
+    <button class="lang-btn active" data-lang="ru">RU</button>
+    <span class="lang-sep"></span>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+
+  <!-- Header / Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1 class="hero-name">
+        <span data-ru="Черкасов Антон Сергеевич" data-en="Anton Cherkasov"></span>
+      </h1>
+      <p class="hero-title">
+        <span data-ru="Lead DevOps / SRE" data-en="Lead DevOps / SRE"></span>
+      </p>
+      <div class="hero-meta">
+        <span class="hero-location">
+          <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <span data-ru="Алматы" data-en="Almaty"></span>
+        </span>
+        <span class="hero-contact">
+          <a href="mailto:otherot@gmail.com">
+            <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            otherot@gmail.com
+          </a>
+        </span>
+        <span class="hero-contact">
+          <a href="https://t.me/otherot" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M9.78 15.83L10.28 12.6L15.78 9.6L12.68 4.08c-.23-.36-.1-.71.3-.87l.44-.14a.78.78 0 01.87.31l5.68 8.34c.2.3.12.69-.22.87L10.2 19.12c-.32.16-.6.03-.72-.24l-.7-3.05z"/></svg>
+            @otherot
+          </a>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">
+        <span data-ru="Обо мне" data-en="About"></span>
+      </h2>
+      <p class="about-text" data-ru="Более 15 лет опыта в IT. Руководжу командой DevOps/SRE инженеров в Сбере. Специализируюсь на построении отказоустойчивой инфраструктуры, автоматизации процессов разработки и развёртывания, а также на обеспечении высокой доступности сервисов (SLA 99.95%). Имею опыт интеграции AI/ML-нагрузок в производственные среды." data-en="Over 15 years of IT experience. Leading a DevOps/SRE team at Sber. Specializing in building resilient infrastructure, automating development and deployment processes, and ensuring high service availability (SLA 99.95%). Experienced in integrating AI/ML workloads into production environments."></span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section section--alt" id="experience">
+    <div class="container">
+      <h2 class="section-title">
+        <span data-ru="Опыт работы" data-en="Experience"></span>
+      </h2>
+
+      <!-- Сбер -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-company">
+            <h3 data-ru="Сбер" data-en="Sber"></h3>
+            <span class="exp-role" data-ru="TeamLead DevOps" data-en="TeamLead DevOps"></span>
+          </div>
+          <div class="exp-period">
+            <span data-ru="Июн 2021 — наст. время (4 г. 11 мес.)" data-en="Jun 2021 — Present (4 yrs 11 mos)"></span>
+          </div>
+        </div>
+        <div class="exp-details">
+          <p data-ru="Сопровождение проекта СБОЛ (Сбербанк онлайн, основное приложение, экосистемы СБЕР), включает полный цикл от пилотных проектов до промышленной эксплуатации в условиях высокой нагрузки и доступности (SLA 99.95%). Поддержка новых и существующих функций продукта. Интеграция технологий искусственного интеллекта в SBOL, таких как ИИ-помощник на базе GigaChat." data-en="Supporting the SBOL project (Sberbank Online — main app and SBER ecosystem), covering the full lifecycle from pilot projects to production deployment under high load and availability conditions (SLA 99.95%). Supporting both new features and existing product functionality. Integrating AI technologies into SBOL, including an AI assistant based on GigaChat."></p>
+          <ul class="exp-bullets">
+            <li data-ru="Руководство командой DevOps/SRE: распределение задач, 1-on-1, код-ревью, менторинг" data-en="Leading a DevOps/SRE team: task distribution, 1-on-1s, code review, mentoring"></li>
+            <li data-ru="Управление кластерами Kubernetes (OpenShift); развёртывание и масштабирование микросервисных приложений, включая поддержку GPU-узлов для ML/AI-нагрузок" data-en="Managing Kubernetes clusters (OpenShift); deploying and scaling microservice applications, including GPU node support for ML/AI workloads"></li>
+            <li data-ru="Автоматизация процессов разработки, сборки и развёртывания ПО (Jenkins, ArgoCD, Helm)" data-en="Automating development, build, and deployment processes (Jenkins, ArgoCD, Helm)"></li>
+            <li data-ru="Настройка облачных сервисов для развёртывания и масштабирования инфраструктуры (Terraform, Ansible)" data-en="Configuring cloud services for application and infrastructure deployment and scaling (Terraform, Ansible)"></li>
+            <li data-ru="Настройка мониторинга продуктов (Prometheus, Grafana, Thanos)" data-en="Setting up product monitoring (Prometheus, Grafana, Thanos)"></li>
+            <li data-ru="Создание отказоустойчивой системы логирования для сервисов и инфраструктуры (ELK/OpenSearch)" data-en="Building a fault-tolerant logging system for services and infrastructure (ELK/OpenSearch)"></li>
+            <li data-ru="Взаимодействие с командами разработки, QA и безопасности для обеспечения надёжности релизного процесса" data-en="Collaborating with development, QA, and security teams to ensure release reliability"></li>
+            <li data-ru="Проведение разбора инцидентов (post-mortem), внедрение мер по снижению MTTR и повышению отказоустойчивости" data-en="Conducting incident post-mortems, implementing measures to reduce MTTR and improve resilience"></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Децима -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-company">
+            <h3 data-ru="ООО &laquo;Децима&raquo;" data-en="Decima LLC"></h3>
+            <span class="exp-role" data-ru="Системный администратор" data-en="System Administrator"></span>
+          </div>
+          <div class="exp-period">
+            <span data-ru="Окт 2013 — Июн 2021 (7 г. 9 мес.)" data-en="Oct 2013 — Jun 2021 (7 yrs 9 mos)"></span>
+          </div>
+        </div>
+        <div class="exp-details">
+          <p data-ru="Поддержка IT-инфраструктуры компании: 20+ серверов (Windows Server, Ubuntu/CentOS, Hyper-V, VMware ESXi), решения на базе Microsoft (AD, Exchange, SharePoint, TFS, WSUS, MS SQL). Настройка Linux-сервисов: Postfix, KVM, Docker, Ansible, Kubernetes, Squid, Asterisk, MySQL, PostgreSQL, Zabbix. Скрипты автоматизации на Bash, PowerShell. Программы на Python. Развёртывание Kaspersky Security Center. Настройка сетевого оборудования (HP, D-Link, MikroTik, Ubiquiti). 100+ рабочих мест." data-en="Company IT infrastructure support: 20+ servers (Windows Server, Ubuntu/CentOS, Hyper-V, VMware ESXi), Microsoft-based solutions (AD, Exchange, SharePoint, TFS, WSUS, MS SQL). Linux services configuration: Postfix, KVM, Docker, Ansible, Kubernetes, Squid, Asterisk, MySQL, PostgreSQL, Zabbix. Automation scripts in Bash and PowerShell. Python applications. Deployed Kaspersky Security Center. Network equipment setup (HP, D-Link, MikroTik, Ubiquiti). 100+ workstations."></p>
+        </div>
+      </div>
+
+      <!-- МГОУ -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-company">
+            <h3 data-ru="Московский государственный областной университет" data-en="Moscow State Regional University"></h3>
+            <span class="exp-role" data-ru="Программист отдела телекоммуникаций" data-en="Telecommunications Programmer"></span>
+          </div>
+          <div class="exp-period">
+            <span data-ru="Ноя 2011 — Фев 2013 (1 г. 4 мес.)" data-en="Nov 2011 — Feb 2013 (1 yr 4 mos)"></span>
+          </div>
+        </div>
+        <div class="exp-details">
+          <p data-ru="Обслуживание и настройка сетевого оборудования Cisco, IP-телефонии (Cisco Call Manager). Поддержка работы сети, ввод в эксплуатацию серверных платформ Microsoft. Настройка рабочих станций в доменной сети Active Directory (~1000 машин на нескольких удалённых сайтах через VPN). Прокладка сетевых линий, монтаж оборудования, поддержка пользователей." data-en="Maintenance and configuration of Cisco network equipment, IP telephony (Cisco Call Manager). Network support, commissioning Microsoft server platforms. Workstation configuration in Active Directory domain (~1000 machines across multiple remote sites via VPN). Cable installation, equipment mounting, user support."></p>
+        </div>
+      </div>
+
+      <!-- МГОУ (ранее) -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-company">
+            <h3 data-ru="Московский государственный областной университет" data-en="Moscow State Regional University"></h3>
+            <span class="exp-role" data-ru="Техник отдела ресурсного обеспечения" data-en="Resource Support Technician"></span>
+          </div>
+          <div class="exp-period">
+            <span data-ru="Мар 2010 — Ноя 2011 (1 г. 9 мес.)" data-en="Mar 2010 — Nov 2011 (1 yr 9 mos)"></span>
+          </div>
+        </div>
+        <div class="exp-details">
+          <p data-ru="Обслуживание компьютеров и периферийного оборудования, текущий ремонт, настройка рабочих станций, установка ПО, обустройство новых рабочих мест." data-en="Computer and peripheral equipment maintenance, repairs, workstation configuration, software installation, setting up new workspaces."></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section" id="skills">
+    <div class="container">
+      <h2 class="section-title">
+        <span data-ru="Навыки" data-en="Skills"></span>
+      </h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3 data-ru="Инфраструктура &amp; DevOps" data-en="Infrastructure &amp; DevOps"></h3>
+          <div class="skill-tags">
+            <span class="tag">Linux</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">OpenShift</span>
+            <span class="tag">Jenkins</span>
+            <span class="tag">ArgoCD</span>
+            <span class="tag">Helm</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">Ansible</span>
+            <span class="tag">CI/CD</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 data-ru="Мониторинг &amp; Логирование" data-en="Monitoring &amp; Logging"></h3>
+          <div class="skill-tags">
+            <span class="tag">Prometheus</span>
+            <span class="tag">Grafana</span>
+            <span class="tag">Thanos</span>
+            <span class="tag">ELK Stack</span>
+            <span class="tag">Elasticsearch</span>
+            <span class="tag">Kibana</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 data-ru="Базы данных &amp; Очереди" data-en="Databases &amp; Message Queues"></h3>
+          <div class="skill-tags">
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Kafka</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 data-ru="Языки &amp; Скрипты" data-en="Languages &amp; Scripting"></h3>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Bash</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 data-ru="Дополнительно" data-en="Additional"></h3>
+          <div class="skill-tags">
+            <span class="tag">Highload</span>
+            <span class="tag">GPU/ML Workloads</span>
+            <span class="tag">Incident Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section section--alt" id="education">
+    <div class="container">
+      <h2 class="section-title">
+        <span data-ru="Образование" data-en="Education"></span>
+      </h2>
+      <div class="edu-card">
+        <h3 data-ru="Московский государственный областной университет" data-en="Moscow State Regional University"></h3>
+        <p class="edu-year">2013</p>
+        <p class="edu-degree" data-ru="Магистр, Физико-математический. Информатика и вычислительная техника" data-en="Master's Degree, Physics &amp; Mathematics. Computer Science and Computing Technology"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates -->
+  <section class="section" id="certificates">
+    <div class="container">
+      <h2 class="section-title">
+        <span data-ru="Сертификаты" data-en="Certifications"></span>
+      </h2>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <h3>GeekBrains (2020)</h3>
+          <ul class="cert-list">
+            <li data-ru="Администрирование серверов Linux" data-en="Linux Server Administration"></li>
+            <li data-ru="Безопасность проводных и беспроводных сетей" data-en="Wired and Wireless Network Security"></li>
+            <li data-ru="Интенсив &laquo;Python для начинающих&raquo;" data-en="Intensive: Python for Beginners"></li>
+            <li data-ru="Операционные системы" data-en="Operating Systems"></li>
+            <li data-ru="Основы баз данных" data-en="Database Fundamentals"></li>
+            <li data-ru="Основы языка Python" data-en="Python Language Basics"></li>
+            <li data-ru="Системный администратор: стажировка" data-en="System Administrator: Internship"></li>
+          </ul>
+        </div>
+        <div class="cert-card">
+          <h3>Yandex Practicum (2019)</h3>
+          <ul class="cert-list">
+            <li data-ru="Linux. Уровень 1" data-en="Linux Level 1"></li>
+            <li data-ru="Linux. Уровень 1. Администрирование рабочих станций" data-en="Linux Level 1 — Workstation Administration"></li>
+            <li data-ru="Компьютерные сети" data-en="Computer Networks"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages -->
+  <section class="section section--alt" id="languages">
+    <div class="container">
+      <h2 class="section-title">
+        <span data-ru="Языки" data-en="Languages"></span>
+      </h2>
+      <div class="langs-row">
+        <div class="lang-card">
+          <span class="lang-name" data-ru="Русский" data-en="Russian"></span>
+          <span class="lang-level" data-ru="Родной" data-en="Native"></span>
+        </div>
+        <div class="lang-card">
+          <span class="lang-name" data-ru="Английский" data-en="English"></span>
+          <span class="lang-level" data-ru="B2 — Средне-продвинутый" data-en="B2 — Upper-Intermediate"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        <span data-ru="Сайт размещён на GitHub Pages" data-en="Hosted on GitHub Pages"></span>
+      </p>
+      <div class="footer-links">
+        <a href="mailto:otherot@gmail.com" data-ru="Написать на почту" data-en="Email"></a>
+        <span class="dot">&middot;</span>
+        <a href="https://t.me/otherot" target="_blank" rel="noopener">Telegram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/lang.js"></script>
+</body>
+</html>
