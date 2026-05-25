@@ -74,8 +74,13 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointe
 .tl-company{color:var(--accent);font-family:var(--font-mono);font-size:.85rem;font-weight:600}
 .tl-period{font-size:.82rem;color:var(--text-muted);font-family:var(--font-mono)}
 .tl-bullets{list-style:none;padding:0;margin-top:.6rem}
-.tl-bullets li{position:relative;padding-left:1.1rem;color:var(--text-secondary);font-size:.93rem;margin-bottom:.35rem;line-height:1.55}
+.tl-bullets li{position:relative;padding-left:1.1rem;color:var(--text-secondary);font-size:.93rem;margin-bottom:.45rem;line-height:1.55}
 .tl-bullets li::before{content:'▸';color:var(--accent);position:absolute;left:0;font-size:.85rem}
+.tl-highlights{margin-top:.75rem;padding:.6rem .9rem .45rem;background:rgba(255,183,0,.05);border-left:2px solid rgba(255,183,0,.35);border-radius:6px}
+.tl-hl-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#ffb733;margin-bottom:.35rem;font-family:var(--font-mono)}
+.tl-hl-list{list-style:none;padding:0}
+.tl-hl-list li{position:relative;padding-left:1.1rem;color:var(--text-secondary);font-size:.93rem;margin-bottom:.25rem;line-height:1.5}
+.tl-hl-list li::before{content:'▸';color:#ffb733;position:absolute;left:0;font-size:.85rem}
 
 /* ── Skills ── */
 .skills-grid{display:grid;gap:1.6rem}
@@ -200,9 +205,16 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointe
           <li data-i18n="exp1_b1"></li>
           <li data-i18n="exp1_b2"></li>
           <li data-i18n="exp1_b3"></li>
-          <li data-i18n="exp1_b4"></li>
           <li data-i18n="exp1_b5"></li>
         </ul>
+        <div class="tl-highlights">
+          <div class="tl-hl-title" data-i18n="hl_title">Ключевые результаты</div>
+          <ul class="tl-hl-list">
+            <li data-i18n="exp1_b4"></li>
+            <li data-i18n="exp1_b6"></li>
+            <li data-i18n="exp1_b7"></li>
+          </ul>
+        </div>
       </div>
 
       <!-- Sber: Senior DevOps -->
@@ -220,6 +232,14 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointe
           <li data-i18n="exp2_b5"></li>
           <li data-i18n="exp2_b6"></li>
         </ul>
+        <div class="tl-highlights">
+          <div class="tl-hl-title" data-i18n="hl_title">Ключевые результаты</div>
+          <ul class="tl-hl-list">
+            <li data-i18n="exp2_b7"></li>
+            <li data-i18n="exp2_b8"></li>
+            <li data-i18n="exp2_b9"></li>
+          </ul>
+        </div>
       </div>
 
       <!-- Sber: Middle DevOps -->
@@ -235,6 +255,12 @@ body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointe
           <li data-i18n="exp3_b3"></li>
           <li data-i18n="exp3_b4"></li>
         </ul>
+        <div class="tl-highlights">
+          <div class="tl-hl-title" data-i18n="hl_title">Ключевые результаты</div>
+          <ul class="tl-hl-list">
+            <li data-i18n="exp3_b5"></li>
+          </ul>
+        </div>
       </div>
 
       <!-- Decima -->
@@ -364,11 +390,14 @@ const i18n = {
     exp1_role: 'Team Lead DevOps',
     exp1_company: 'Сбер',
     exp1_period: 'ноябрь 2024 — н.в.',
+    hl_title: 'Ключевые результаты',
     exp1_b1: 'Руководство командой DevOps/SRE инженеров (~10 человек): распределение задач, 1-on-1, код-ревью, менторинг',
     exp1_b2: 'Обеспечение SLA 99.95% для СБОЛ (Сбербанк Онлайн) в условиях высокой нагрузки',
     exp1_b3: 'Координация с командами разработки, QA и безопасности для надёжности релизного процесса',
-    exp1_b4: 'Сопровождение перехода ИИ-ассистента на архитектуру агентного поиска',
+    exp1_b4: 'Внедрение SRE-практик для GPU-инфраструктуры и ИИ-сервисов: отказоустойчивость, масштабирование и наблюдаемость ML/AI нагрузок',
     exp1_b5: 'Внедрение мер по снижению MTTR и повышению отказоустойчивости',
+    exp1_b6: 'Миграция кластеров ELK в OpenSearch (150 ТБ, георезервирование)',
+    exp1_b7: 'Миграция системы мониторинга с Prometheus на Victoria Metrics',
     exp2_role: 'Senior DevOps',
     exp2_company: 'Сбер',
     exp2_period: 'декабрь 2021 — ноябрь 2024',
@@ -378,6 +407,9 @@ const i18n = {
     exp2_b4: 'Разбор сложных инцидентов (post-mortem), снижение MTTR',
     exp2_b5: 'Участие во внедрении ИИ-ассистента на базе LLM в поисковую систему продукта',
     exp2_b6: 'Взаимодействие с командами разработки, QA и безопасности',
+    exp2_b7: 'Миграция кластеров с OpenShift на bare-metal Kubernetes',
+    exp2_b8: 'Внедрение Istio для управления трафиком микросервисов',
+    exp2_b9: 'Внедрение HashiCorp Vault для централизованного управления секретами',
     exp3_role: 'Middle DevOps',
     exp3_company: 'Сбер',
     exp3_period: 'июнь 2021 — декабрь 2021',
@@ -385,6 +417,7 @@ const i18n = {
     exp3_b2: 'Развёртывание микросервисных приложений в Kubernetes (OpenShift)',
     exp3_b3: 'Поддержка мониторинга (Prometheus, Grafana, Thanos) и логирования (ELK/OpenSearch)',
     exp3_b4: 'Операционная поддержка инфраструктуры в рамках команды',
+    exp3_b5: 'Полное переосмысление CI/CD для соответствия строгим стандартам банка с переходом на Helm и ArgoCD',
     exp4_role: 'Системный администратор',
     exp4_company: 'ООО «Децима»',
     exp4_period: 'октябрь 2013 — июнь 2021',
@@ -440,11 +473,14 @@ const i18n = {
     exp1_role: 'Team Lead DevOps',
     exp1_company: 'Sberbank',
     exp1_period: 'Nov 2024 — present',
+    hl_title: 'Key Results',
     exp1_b1: 'Leading a team of ~10 DevOps/SRE engineers: task distribution, 1-on-1s, code reviews, mentoring',
     exp1_b2: 'Ensuring 99.95% SLA for SBOL (Sberbank Online) under high load conditions',
     exp1_b3: 'Coordinating with development, QA and security teams for reliable release processes',
-    exp1_b4: 'Supporting the AI assistant migration to agent-based search architecture',
+    exp1_b4: 'Implementing SRE practices for GPU infrastructure and AI services: ensuring fault tolerance, scalability, and observability of ML/AI workloads',
     exp1_b5: 'Implementing measures to reduce MTTR and improve fault tolerance',
+    exp1_b6: 'Migration of ELK clusters to OpenSearch (150 TB, geo-redundancy)',
+    exp1_b7: 'Migration of the monitoring system from Prometheus to Victoria Metrics',
     exp2_role: 'Senior DevOps',
     exp2_company: 'Sberbank',
     exp2_period: 'Dec 2021 — Nov 2024',
@@ -454,6 +490,9 @@ const i18n = {
     exp2_b4: 'Complex incident post-mortems, MTTR reduction',
     exp2_b5: 'Contributed to LLM-based AI assistant integration into the product search system',
     exp2_b6: 'Collaboration with development, QA and security teams',
+    exp2_b7: 'Migration of clusters from OpenShift to bare-metal Kubernetes',
+    exp2_b8: 'Istio adoption for microservice traffic management',
+    exp2_b9: 'HashiCorp Vault adoption for centralized secrets management',
     exp3_role: 'Middle DevOps',
     exp3_company: 'Sberbank',
     exp3_period: 'Jun 2021 — Dec 2021',
@@ -461,6 +500,7 @@ const i18n = {
     exp3_b2: 'Deploying microservice applications to Kubernetes (OpenShift)',
     exp3_b3: 'Monitoring support (Prometheus, Grafana, Thanos) and logging (ELK/OpenSearch)',
     exp3_b4: 'Operational infrastructure support within the team',
+    exp3_b5: 'Complete CI/CD redesign to meet strict bank compliance standards, migrating to Helm and ArgoCD',
     exp4_role: 'System Administrator',
     exp4_company: 'Decima LLC',
     exp4_period: 'Oct 2013 — Jun 2021',
