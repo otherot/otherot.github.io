@@ -40,8 +40,8 @@
   --border:rgba(255,255,255,.06);--radius:10px;
   --font-mono:'SF Mono','Fira Code',monospace;
 }
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.65;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:72px;overflow-x:hidden;max-width:100vw}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
 
 /* ── Background texture (dot grid + subtle noise) ── */
 body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px}
@@ -80,7 +80,7 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
 /* ── Hero ── */
 .hero{min-height:100vh;display:flex;align-items:center;padding:6rem 2rem 4rem;position:relative}
 .hero::before{content:'';position:absolute;top:15%;left:30%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,230,199,.1) 0%,transparent 70%);pointer-events:none;z-index:0}
-.hero .container{position:relative;z-index:1;text-align:center}
+.hero .container{position:relative;z-index:1;text-align:center;width:100%}
 .hero-name{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.3rem;background:linear-gradient(135deg,var(--text-primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-title{font-size:clamp(1.1rem,3vw,1.5rem);color:var(--accent);font-weight:600;margin-bottom:.8rem;font-family:var(--font-mono)}
 .type-cursor{display:inline-block;margin-left:2px;color:var(--accent);animation:blink 1s step-end infinite}
