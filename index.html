@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anton Cherkasov — Site Reliability Engineer &amp; Team Lead</title>
-<meta name="description" content="Anton Cherkasov — Site Reliability Engineer &amp; Team Lead with 15+ years of experience in Kubernetes, CI/CD, Terraform and site reliability for high-load banking systems.">
+<meta name="description" content="Anton Cherkasov — Site Reliability Engineer &amp; Team Lead with 10+ years of experience in Kubernetes, CI/CD, Terraform and site reliability for high-load banking systems.">
 <link rel="canonical" href="https://otherot.github.io/">
 <link rel="alternate" hreflang="en" href="https://otherot.github.io/">
 <link rel="alternate" hreflang="x-default" href="https://otherot.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://otherot.github.io/">
 <meta property="og:title" content="Anton Cherkasov — Site Reliability Engineer &amp; Team Lead">
-<meta property="og:description" content="15+ years of experience building reliable infrastructure and automation: Kubernetes, CI/CD, Terraform, SRE for high-load banking systems.">
+<meta property="og:description" content="10+ years of experience building reliable infrastructure and automation: Kubernetes, CI/CD, Terraform, SRE for high-load banking systems.">
 <meta property="og:image" content="https://otherot.github.io/images/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Anton Cherkasov — Site Reliability Engineer &amp; Team Lead">
-<meta name="twitter:description" content="15+ years of experience building reliable infrastructure and automation: Kubernetes, CI/CD, Terraform, SRE for high-load banking systems.">
+<meta name="twitter:description" content="10+ years of experience building reliable infrastructure and automation: Kubernetes, CI/CD, Terraform, SRE for high-load banking systems.">
 <meta name="twitter:image" content="https://otherot.github.io/images/og-card.png">
 <link rel="icon" href="/icons/logo.svg" type="image/svg+xml">
 <link rel="shortcut icon" href="/icons/logo.svg" type="image/svg+xml">
@@ -94,9 +94,6 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
 .status-line{display:inline-flex;align-items:center;gap:.55rem;margin:0 auto 1.8rem;padding:.55rem 1.1rem;background:var(--accent-dim);border:1px solid rgba(0,230,199,.25);border-radius:999px;font-size:.8rem;color:var(--text-secondary);font-family:var(--font-mono);max-width:600px;text-align:left}
 .status-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;position:relative}
 .status-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid var(--accent);animation:pulseRing 2s ease-out infinite}
-.btn-resume{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1.8rem;padding:.65rem 1.3rem;background:var(--accent-dim);border:1px solid rgba(0,230,199,.3);border-radius:8px;color:var(--accent);text-decoration:none;font-size:.88rem;font-weight:600;transition:all .2s}
-.btn-resume:hover{background:rgba(0,230,199,.22);border-color:var(--accent)}
-.btn-resume .icon{width:18px;height:18px}
 .hero-links{display:flex;gap:.8rem;justify-content:center}
 .hero-link{display:flex;align-items:center;justify-content:center;width:50px;height:50px;text-decoration:none;border:1px solid rgba(0,230,199,.2);border-radius:50%;transition:all .25s}
 .hero-link:hover{background:var(--accent-dim);border-color:var(--accent)}
@@ -146,16 +143,6 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
 .edu-degree{font-weight:700;font-size:1.05rem;color:var(--text-primary)}
 .edu-school{color:var(--accent);font-family:var(--font-mono);font-size:.88rem;margin-top:.2rem}
 .edu-year{color:var(--text-muted);font-size:.82rem;font-family:var(--font-mono);margin-top:.15rem}
-
-/* ── Certificates ── */
-.certs-header{font-size:.95rem;color:var(--text-primary);font-weight:600;margin:1.6rem 0 .8rem;text-transform:uppercase;letter-spacing:.04em}
-.certs-list{list-style:none;padding:0;display:grid;gap:.6rem}
-.certs-list li{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:.6rem .9rem;transition:border-color .2s,background .2s,transform .15s ease-out;will-change:transform}
-.certs-list li:hover{border-color:rgba(0,230,199,.3);background:rgba(21,32,50,.95)}
-.certs-list a{color:var(--accent);text-decoration:none;font-size:.85rem;font-family:var(--font-mono);transition:color .2s;display:flex;align-items:center;justify-content:space-between;gap:.5rem}
-.certs-list a:hover{color:var(--text-primary)}
-.certs-list a::after{content:'↗';font-size:.75rem;opacity:.6;flex-shrink:0}
-@media(min-width:600px){.certs-list{grid-template-columns:1fr 1fr}}
 
 /* ── Footer ── */
 .footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);color:var(--text-muted);font-size:.82rem}
@@ -235,13 +222,12 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
   <div class="container reveal">
     <h1 class="hero-name" data-i18n="hero_name">Anton Cherkasov</h1>
     <p class="hero-title" id="heroTitle"><span id="heroTitleText" aria-hidden="true"></span><span class="type-cursor" aria-hidden="true">_</span></p>
-    <p class="hero-tagline" data-i18n="hero_tagline">15+ years of experience building reliable infrastructure and automation</p>
-    <div class="status-line"><span class="status-dot" aria-hidden="true"></span><span data-i18n="status_line">Open to SRE Lead and Platform Engineering roles across the EU · relocating, visa sponsorship required</span></div>
-    <a href="resume/Anton_Cherkasov_CV_EN.pdf" class="btn-resume" download>
-      <img src="icons/download.svg" alt="" class="icon">
-      <span data-i18n="resume_cta">Download CV (PDF)</span>
-    </a>
+    <p class="hero-tagline" data-i18n="hero_tagline">10+ years of experience building reliable infrastructure and automation</p>
+    <div class="status-line"><span class="status-dot" aria-hidden="true"></span><span data-i18n="status_line">Open to EU relocation · SRE Lead / Platform Engineering · visa sponsorship</span></div>
     <div class="hero-links">
+      <a href="resume/Anton_Cherkasov_CV_EN.pdf" class="hero-link" download title="Download CV (PDF)">
+        <img src="icons/download.svg" alt="" class="icon">
+      </a>
       <a href="mailto:otherot@gmail.com" class="hero-link" title="otherot@gmail.com">
         <img src="icons/mail.svg" alt="" class="icon">
       </a>
@@ -262,10 +248,9 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
 <section class="section" id="about">
   <div class="container reveal">
     <h2 class="section-title" data-i18n="nav_about">About</h2>
-    <p class="about-text" data-i18n="about_text">DevOps/SRE engineer with over 15 years of experience — from system administration to leading a DevOps team at a major bank. Specialized in Kubernetes/OpenShift, CI/CD (Jenkins, ArgoCD), Terraform and Ansible. Maintaining 99.95% SLA for Sberbank's high-traffic services including SBOL and an LLM-based AI assistant.</p>
+    <p class="about-text" data-i18n="about_text">DevOps/SRE engineer with over 10 years of experience — from system administration to leading a DevOps team at a major bank. Specialized in Kubernetes/OpenShift, CI/CD (Jenkins, ArgoCD), Terraform and Ansible. Maintaining 99.95% SLA for Sberbank's high-traffic services including SBOL and an LLM-based AI assistant.</p>
     <div class="about-stats">
-      <div class="stat"><div class="stat-num" data-i18n="stat_exp">15+</div><div class="stat-label" data-i18n="stat_exp_label">years of experience</div></div>
-      <div class="stat"><div class="stat-num" data-i18n="stat_migration">300TB</div><div class="stat-label" data-i18n="stat_migration_label">migrated with zero downtime</div></div>
+      <div class="stat"><div class="stat-num" data-i18n="stat_exp">10+</div><div class="stat-label" data-i18n="stat_exp_label">years of experience</div></div>
       <div class="stat"><div class="stat-num" data-i18n="stat_team">~10</div><div class="stat-label" data-i18n="stat_team_label">team members</div></div>
       <div class="stat"><div class="stat-num" data-i18n="stat_sla">99.95%</div><div class="stat-label" data-i18n="stat_sla_label">SBOL SLA</div></div>
     </div>
@@ -412,10 +397,6 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
       <div class="edu-school" data-i18n="edu2_school">Moscow State Regional University (MSRU)</div>
       <div class="edu-year" data-i18n="edu2_year">2011</div>
     </div>
-    <h3 class="certs-header" data-i18n="cert_header">Certificates</h3>
-    <!-- Placeholder for upcoming certifications (e.g. CKA). Follow the certs-ru/certs-en pattern used elsewhere when adding entries. -->
-    <ul class="certs-list" id="certs-ru"></ul>
-    <ul class="certs-list" id="certs-en" style="display:none"></ul>
   </div>
 </section>
 
@@ -433,14 +414,11 @@ const i18n = {
     nav_education: 'Образование',
     hero_name: 'Черкасов Антон',
     hero_title: 'Site Reliability Engineer & Team Lead',
-    hero_tagline: '15+ лет опыта в построении надёжной инфраструктуры и автоматизации',
-    status_line: 'Открыт к ролям SRE Lead и Platform Engineering в ЕС · переезд, требуется спонсорство визы',
-    resume_cta: 'Скачать резюме (PDF)',
-    about_text: 'DevOps/SRE-инженер с более чем 15-летним опытом — от системного администрирования до руководства командой DevOps в крупном банке. Специализируюсь на Kubernetes/OpenShift, CI/CD (Jenkins, ArgoCD), Terraform и Ansible. Обеспечиваю SLA 99.95% для высоконагруженных сервисов Сбера, включая СБОЛ и ИИ-ассистент на базе LLM.',
-    stat_exp: '15+',
+    hero_tagline: '10+ лет опыта в построении надёжной инфраструктуры и автоматизации',
+    status_line: 'Открыт к переезду в ЕС · SRE Lead / Platform Engineering · требуется спонсорство визы',
+    about_text: 'DevOps/SRE-инженер с более чем 10-летним опытом — от системного администрирования до руководства командой DevOps в крупном банке. Специализируюсь на Kubernetes/OpenShift, CI/CD (Jenkins, ArgoCD), Terraform и Ansible. Обеспечиваю SLA 99.95% для высоконагруженных сервисов Сбера, включая СБОЛ и ИИ-ассистент на базе LLM.',
+    stat_exp: '10+',
     stat_exp_label: 'лет опыта',
-    stat_migration: '300ТБ',
-    stat_migration_label: 'мигрировано без даунтайма',
     stat_team: '~10',
     stat_team_label: 'человек в команде',
     stat_sla: '99.95%',
@@ -505,7 +483,6 @@ const i18n = {
     edu2_degree: 'Бакалавр — Информатика',
     edu2_school: 'Московский государственный областной университет',
     edu2_year: '2011',
-    cert_header: 'Сертификаты',
     footer_text: 'Черкасов Антон. Site Reliability Engineer & Team Lead'
   },
   en: {
@@ -515,14 +492,11 @@ const i18n = {
     nav_education: 'Education',
     hero_name: 'Anton Cherkasov',
     hero_title: 'Site Reliability Engineer & Team Lead',
-    hero_tagline: '15+ years of experience building reliable infrastructure and automation',
-    status_line: 'Open to SRE Lead and Platform Engineering roles across the EU · relocating, visa sponsorship required',
-    resume_cta: 'Download CV (PDF)',
-    about_text: 'DevOps/SRE engineer with over 15 years of experience — from system administration to leading a DevOps team at a major bank. Specialized in Kubernetes/OpenShift, CI/CD (Jenkins, ArgoCD), Terraform and Ansible. Maintaining 99.95% SLA for Sberbank\'s high-traffic services including SBOL and an LLM-based AI assistant.',
-    stat_exp: '15+',
+    hero_tagline: '10+ years of experience building reliable infrastructure and automation',
+    status_line: 'Open to EU relocation · SRE Lead / Platform Engineering · visa sponsorship',
+    about_text: 'DevOps/SRE engineer with over 10 years of experience — from system administration to leading a DevOps team at a major bank. Specialized in Kubernetes/OpenShift, CI/CD (Jenkins, ArgoCD), Terraform and Ansible. Maintaining 99.95% SLA for Sberbank\'s high-traffic services including SBOL and an LLM-based AI assistant.',
+    stat_exp: '10+',
     stat_exp_label: 'years of experience',
-    stat_migration: '300TB',
-    stat_migration_label: 'migrated with zero downtime',
     stat_team: '~10',
     stat_team_label: 'team members',
     stat_sla: '99.95%',
@@ -587,7 +561,6 @@ const i18n = {
     edu2_degree: 'Bachelor — Informatics',
     edu2_school: 'Moscow State Regional University (MSRU)',
     edu2_year: '2011',
-    cert_header: 'Certificates',
     footer_text: 'Anton Cherkasov. Site Reliability Engineer & Team Lead'
   }
 };
@@ -619,12 +592,6 @@ function applyLang(lang) {
     const key = el.getAttribute('data-i18n');
     if (t[key] !== undefined) el.textContent = t[key];
   });
-  const certsRu = document.getElementById('certs-ru');
-  const certsEn = document.getElementById('certs-en');
-  if (certsRu && certsEn) {
-    certsRu.style.display = lang === 'ru' ? 'grid' : 'none';
-    certsEn.style.display = lang === 'en' ? 'grid' : 'none';
-  }
   const flag = document.getElementById('langFlag');
   if (flag) flag.src = lang === 'en' ? 'icons/ru.svg' : 'icons/us.svg';
   localStorage.setItem('portfolio-lang', lang);
@@ -806,7 +773,6 @@ function initTilt(selector, maxDeg = 7) {
 }
 if (!prefersReducedMotion) {
   initTilt('.edu-card');
-  initTilt('.certs-list li');
 }
 
 // ── Init ──
