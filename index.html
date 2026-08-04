@@ -336,7 +336,7 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
       <div class="tl-item reveal">
         <div class="tl-dot"></div>
         <div class="tl-header">
-          <span><span class="tl-role" data-i18n="exp4_role">System Administrator</span> · <span class="tl-company" data-i18n="exp4_company">Decima LLC</span></span>
+          <span><span class="tl-role" data-i18n="exp4_role">Enterprise System Administrator</span> · <span class="tl-company" data-i18n="exp4_company">Decima LLC</span></span>
           <span class="tl-period" data-i18n="exp4_period">Oct 2013 — Jun 2021</span>
         </div>
         <ul class="tl-bullets">
@@ -371,14 +371,15 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
   <div class="container reveal">
     <h2 class="section-title" data-i18n="nav_skills">Skills</h2>
     <div class="skills-grid">
-      <div class="skill-group"><h3 data-i18n="skl_orch_title">Orchestration</h3><div class="badges"><span class="badge">Kubernetes</span><span class="badge">OpenShift</span></div></div>
-      <div class="skill-group"><h3 data-i18n="skl_cicd_title">CI / CD</h3><div class="badges"><span class="badge">Jenkins</span><span class="badge">ArgoCD</span><span class="badge">Helm</span></div></div>
-      <div class="skill-group"><h3 data-i18n="skl_iac_title">Infrastructure as Code</h3><div class="badges"><span class="badge">Terraform</span><span class="badge">Ansible</span></div></div>
-      <div class="skill-group"><h3 data-i18n="skl_mon_title">Monitoring</h3><div class="badges"><span class="badge">Prometheus</span><span class="badge">Grafana</span><span class="badge">Thanos</span></div></div>
-      <div class="skill-group"><h3 data-i18n="skl_log_title">Logging</h3><div class="badges"><span class="badge">ELK</span><span class="badge">OpenSearch</span><span class="badge">Kibana</span></div></div>
-      <div class="skill-group"><h3 data-i18n="skl_lang_title">Programming Languages</h3><div class="badges"><span class="badge">Python</span><span class="badge">Bash</span></div></div>
-      <div class="skill-group"><h3 data-i18n="skl_db_title">Databases</h3><div class="badges"><span class="badge">PostgreSQL</span><span class="badge">MySQL</span></div></div>
-      <div class="skill-group"><h3 data-i18n="skl_other_title">Other</h3><div class="badges"><span class="badge">Docker</span><span class="badge">Kafka</span><span class="badge">Git</span><span class="badge">Elasticsearch</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_orch_title">Orchestration</h3><div class="badges"><span class="badge">Kubernetes</span><span class="badge">OpenShift</span><span class="badge">Docker</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_cicd_title">CI / CD</h3><div class="badges"><span class="badge">Jenkins</span><span class="badge">ArgoCD</span><span class="badge">Helm</span><span class="badge">Git</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_iac_title">Infrastructure as Code</h3><div class="badges"><span class="badge">Terraform</span><span class="badge">Ansible</span><span class="badge">GitOps</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_mon_title">Monitoring</h3><div class="badges"><span class="badge">Prometheus</span><span class="badge">VictoriaMetrics</span><span class="badge">Grafana</span><span class="badge">Thanos</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_log_title">Logging</h3><div class="badges"><span class="badge">ELK</span><span class="badge">OpenSearch</span><span class="badge">Kibana</span><span class="badge">Elasticsearch</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_sec_title">Security</h3><div class="badges"><span class="badge">Istio</span><span class="badge">HashiCorp Vault</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_platform_title">Platforms</h3><div class="badges"><span class="badge">Windows Server</span><span class="badge">VMware ESXi</span><span class="badge">Hyper-V</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_lang_title">Programming Languages</h3><div class="badges"><span class="badge">Python</span><span class="badge">Bash</span><span class="badge">PowerShell</span></div></div>
+      <div class="skill-group"><h3 data-i18n="skl_db_title">Databases &amp; Messaging</h3><div class="badges"><span class="badge">PostgreSQL</span><span class="badge">MySQL</span><span class="badge">MSSQL</span><span class="badge">Kafka</span></div></div>
     </div>
   </div>
 </section>
@@ -455,7 +456,7 @@ const i18n = {
     exp3_b3: 'Поддержка мониторинга (Prometheus, Grafana, Thanos) и логирования (ELK/OpenSearch)',
     exp3_b4: 'Операционная поддержка инфраструктуры в рамках команды',
     exp3_b5: 'Полное переосмысление CI/CD для соответствия строгим стандартам банка с переходом на Helm и ArgoCD',
-    exp4_role: 'Системный администратор',
+    exp4_role: 'Системный администратор предприятия',
     exp4_company: 'ООО «Децима»',
     exp4_period: 'октябрь 2013 — июнь 2021',
     exp4_b1: 'Поддержка IT-инфраструктуры: 20+ серверов (Windows Server, Ubuntu, CentOS, Hyper-V, VMware ESXi)',
@@ -474,9 +475,10 @@ const i18n = {
     skl_iac_title: 'Infrastructure as Code',
     skl_mon_title: 'Мониторинг',
     skl_log_title: 'Логирование',
+    skl_sec_title: 'Безопасность',
+    skl_platform_title: 'Платформы',
     skl_lang_title: 'Языки программирования',
-    skl_db_title: 'Базы данных',
-    skl_other_title: 'Прочее',
+    skl_db_title: 'Базы данных и очереди',
     edu1_degree: 'Магистр — Информатика и вычислительная техника',
     edu1_school: 'Московский государственный областной университет',
     edu1_year: '2013',
@@ -533,7 +535,7 @@ const i18n = {
     exp3_b3: 'Supplied monitoring support (Prometheus, Grafana, Thanos) and logging (ELK/OpenSearch)',
     exp3_b4: 'Provided operational infrastructure support within the team',
     exp3_b5: 'Redesigned the CI/CD platform to meet strict banking compliance standards and migrate to Helm and ArgoCD',
-    exp4_role: 'System Administrator',
+    exp4_role: 'Enterprise System Administrator',
     exp4_company: 'Decima LLC',
     exp4_period: 'Oct 2013 — Jun 2021',
     exp4_b1: 'IT infrastructure support: 20+ servers (Windows Server, Ubuntu, CentOS, Hyper-V, VMware ESXi)',
@@ -552,9 +554,10 @@ const i18n = {
     skl_iac_title: 'Infrastructure as Code',
     skl_mon_title: 'Monitoring',
     skl_log_title: 'Logging',
+    skl_sec_title: 'Security',
+    skl_platform_title: 'Platforms',
     skl_lang_title: 'Programming Languages',
-    skl_db_title: 'Databases',
-    skl_other_title: 'Other',
+    skl_db_title: 'Databases & Messaging',
     edu1_degree: "Master's — Computer Science & Computational Technology",
     edu1_school: 'Moscow State Regional University (MSRU)',
     edu1_year: '2013',
