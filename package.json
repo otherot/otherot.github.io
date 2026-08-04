@@ -1,0 +1,25 @@
+{
+  "name": "otherot.github.io",
+  "version": "1.0.0",
+  "description": "Personal portfolio website built with pure HTML, CSS, and vanilla JavaScript. No frameworks, no build tools — works as static files on GitHub Pages.",
+  "main": "index.js",
+  "scripts": {
+    "og": "node scripts/generate-og.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/otherot/otherot.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/otherot/otherot.github.io/issues"
+  },
+  "homepage": "https://github.com/otherot/otherot.github.io#readme",
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  }
+}
