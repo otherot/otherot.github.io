@@ -3,7 +3,6 @@ const path = require('path');
 
 const cards = [
   { src: '../og/card.html', out: '../images/og-card.png' },
-  { src: '../og/article-card.html', out: '../images/og-elk-migration.png' },
 ];
 
 (async () => {

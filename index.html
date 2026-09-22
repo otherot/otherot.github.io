@@ -15,7 +15,10 @@
 <meta property="og:image" content="https://otherot.github.io/images/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Anton Cherkasov — Site Reliability Engineer &amp; Team Lead">
+<meta property="og:site_name" content="Anton Cherkasov">
 <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Anton Cherkasov — Site Reliability Engineer &amp; Team Lead">
 <meta name="twitter:description" content="15+ years building reliable infrastructure. Kubernetes, CI/CD, Terraform, SRE at scale.">
@@ -33,6 +36,12 @@
   "jobTitle": "Site Reliability Engineer & Team Lead",
   "url": "https://otherot.github.io/",
   "email": "mailto:otherot@gmail.com",
+  "image": "https://otherot.github.io/images/og-card.png",
+  "description": "DevOps/SRE engineer with 15+ years of experience, leading an SRE team for high-load banking systems.",
+  "worksFor": { "@type": "Organization", "name": "Sberbank" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Moscow State Regional University" },
+  "knowsAbout": ["Site Reliability Engineering", "Kubernetes", "OpenShift", "Observability", "CI/CD", "Terraform", "Ansible", "Istio", "OpenSearch", "VictoriaMetrics"],
+  "knowsLanguage": ["ru", "en"],
   "sameAs": ["https://github.com/otherot", "https://t.me/otherot", "https://www.linkedin.com/in/otherot"]
 }
 </script>
@@ -52,12 +61,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px}
 body::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025' fill='%23ffffff'/%3E%3C/svg%3E");background-size:256px 256px;opacity:.45}
 
-/* ── Cursor effects (site-wide) ── */
+/* ── Cursor glow (site-wide) ── */
 .cursor-glow{position:fixed;inset:0;pointer-events:none;z-index:5;mix-blend-mode:screen;opacity:0;transition:opacity .5s;background:radial-gradient(520px circle at var(--cx,50%) var(--cy,50%),rgba(0,230,199,.15),transparent 65%)}
-.cursor-dot{position:fixed;top:0;left:0;width:6px;height:6px;border-radius:50%;background:var(--accent);pointer-events:none;z-index:300;opacity:0;transition:opacity .3s}
-.cursor-ring{position:fixed;top:0;left:0;width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(0,230,199,.55);pointer-events:none;z-index:300;opacity:0;transition:opacity .3s,width .25s ease,height .25s ease,border-color .25s,background .25s}
-.cursor-ring.hovered{width:52px;height:52px;border-color:var(--accent);background:rgba(0,230,199,.08)}
-body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
+
+/* ── Focus ── */
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.skip-link{position:fixed;left:1rem;top:-4rem;z-index:400;background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--accent);border-radius:var(--radius);padding:.6rem 1rem;font-size:.88rem;text-decoration:none;transition:top .2s}
+.skip-link:focus-visible{top:.6rem}
 
 /* ── Header ── */
 .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:var(--accent);z-index:200;transition:width .1s linear}
@@ -76,7 +86,7 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
 
 /* ── Sections ── */
 .section{padding:5rem 2rem}
-.section:nth-child(even){background:var(--bg-secondary)}
+.section--alt{background:var(--bg-secondary)}
 .container{max-width:960px;margin:0 auto}
 .section-title{font-size:1.6rem;font-weight:700;margin-bottom:2.4rem;color:var(--text-primary);position:relative;display:inline-block}
 .section-title::after{content:'';display:block;width:0;height:3px;background:var(--accent);border-radius:2px;margin-top:.5rem;transition:width .6s ease .2s}
@@ -90,10 +100,7 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
 .hero-title{font-size:clamp(1.1rem,3vw,1.5rem);color:var(--accent);font-weight:600;margin-bottom:.8rem;font-family:var(--font-mono)}
 .type-cursor{display:inline-block;margin-left:2px;color:var(--accent);animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.hero-tagline{font-size:clamp(.95rem,2vw,1.15rem);color:var(--text-secondary);max-width:540px;margin:0 auto 1.6rem}
-.status-line{display:inline-flex;align-items:center;gap:.55rem;margin:0 auto 1.8rem;padding:.55rem 1.1rem;background:var(--accent-dim);border:1px solid rgba(0,230,199,.25);border-radius:999px;font-size:.8rem;color:var(--text-secondary);font-family:var(--font-mono);max-width:600px;text-align:left}
-.status-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;position:relative}
-.status-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid var(--accent);animation:pulseRing 2s ease-out infinite}
+.hero-tagline{font-size:clamp(.95rem,2vw,1.15rem);color:var(--text-secondary);max-width:540px;margin:0 auto 2.2rem}
 .hero-links{display:flex;gap:.8rem;justify-content:center}
 .hero-link{display:flex;align-items:center;justify-content:center;width:50px;height:50px;text-decoration:none;border:1px solid rgba(0,230,199,.2);border-radius:50%;transition:all .25s}
 .hero-link:hover{background:var(--accent-dim);border-color:var(--accent)}
@@ -127,8 +134,6 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
 .tl-hl-list{list-style:none;padding:0}
 .tl-hl-list li{position:relative;padding-left:1.1rem;color:var(--text-secondary);font-size:.93rem;margin-bottom:.25rem;line-height:1.5}
 .tl-hl-list li::before{content:'▸';color:#ffb733;position:absolute;left:0;font-size:.85rem}
-.tl-article-link{color:var(--accent);text-decoration:none;font-family:var(--font-mono);font-size:.82rem;font-weight:600;white-space:nowrap;transition:opacity .2s}
-.tl-article-link:hover{opacity:.75}
 
 /* ── Skills ── */
 .skills-grid{display:grid;gap:1.6rem}
@@ -181,41 +186,67 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
   .tl-dot--live::after{animation:none}
   .nav-indicator{transition:none}
   .scroll-progress{transition:none}
-  .cursor-glow,.cursor-dot,.cursor-ring{display:none}
+  .cursor-glow{display:none}
 }
 
 @media(pointer:coarse){
-  .cursor-glow,.cursor-dot,.cursor-ring{display:none}
+  .cursor-glow{display:none}
+}
+
+/* ── Print: flatten to a readable black-on-white CV ── */
+@media print{
+  :root{
+    --bg-primary:#fff;--bg-secondary:#fff;--bg-card:#fff;
+    --accent:#00695c;--accent-dim:#fff;
+    --text-primary:#111;--text-secondary:#333;--text-muted:#555;
+    --border:#ccc;
+  }
+  body{background:#fff;color:#111;line-height:1.45}
+  body::before,body::after,.cursor-glow,.scroll-progress,.header,.nav-toggle,.hero::before,.skip-link{display:none!important}
+  .hero{min-height:auto;padding:0 0 1.5rem}
+  .hero-name{-webkit-text-fill-color:#111;color:#111;background:none}
+  .type-cursor,.hero-links{display:none}
+  .section{padding:1.2rem 0;break-inside:avoid}
+  .section--alt{background:none}
+  .section-title::after{width:48px!important;background:#00695c}
+  .reveal{opacity:1!important;transform:none!important}
+  .tl-item,.edu-card,.skill-group{break-inside:avoid}
+  .edu-card{transform:none!important}
+  .badge{border:1px solid #ccc;color:#111;background:none}
+  .tl-highlights{background:none;border-left:2px solid #999}
+  .tl-hl-title{color:#111}
+  @page{margin:14mm}
 }
 </style>
 </head>
 <body>
 
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<a href="#main" class="skip-link" data-i18n="skip_link">Skip to content</a>
 
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ── Header ── -->
 <header class="header">
   <div class="header-inner">
-    <a href="#hero" class="header-logo">
-      <img src="icons/logo.svg" alt="Logo" class="icon-logo">
+    <a href="#hero" class="header-logo" aria-label="Anton Cherkasov — home">
+      <img src="icons/logo.svg" alt="" class="icon-logo">
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="headerNav">
       <img src="icons/menu.svg" alt="" class="icon">
     </button>
-    <nav class="header-nav">
+    <nav class="header-nav" id="headerNav" aria-label="Main">
       <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
       <a href="#about" data-i18n="nav_about">About</a>
       <a href="#experience" data-i18n="nav_experience">Experience</a>
       <a href="#skills" data-i18n="nav_skills">Skills</a>
       <a href="#education" data-i18n="nav_education">Education</a>
-      <button class="lang-toggle" id="langToggle" onclick="toggleLang()"><img id="langFlag" src="icons/ru.svg" alt="Switch language" class="flag-icon"></button>
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()" aria-label="Switch language"><img id="langFlag" src="icons/ru.svg" alt="" class="flag-icon"></button>
     </nav>
   </div>
 </header>
+
+<main id="main">
 
 <!-- ── Hero ── -->
 <section class="hero" id="hero">
@@ -223,21 +254,20 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
     <h1 class="hero-name" data-i18n="hero_name">Anton Cherkasov</h1>
     <p class="hero-title" id="heroTitle"><span id="heroTitleText" aria-hidden="true"></span><span class="type-cursor" aria-hidden="true">_</span></p>
     <p class="hero-tagline" data-i18n="hero_tagline">15+ years of experience building reliable infrastructure and automation</p>
-    <div class="status-line"><span class="status-dot" aria-hidden="true"></span><span data-i18n="status_line">Open to EU relocation · SRE Lead / Platform Engineering</span></div>
     <div class="hero-links">
-      <a href="resume/Anton_Cherkasov_SRE_CV.pdf" class="hero-link" download title="Download CV (PDF)">
+      <a href="resume/Anton_Cherkasov_SRE_CV.pdf" class="hero-link" download aria-label="Download CV (PDF)" title="Download CV (PDF)">
         <img src="icons/download.svg" alt="" class="icon">
       </a>
-      <a href="mailto:otherot@gmail.com" class="hero-link" title="otherot@gmail.com">
+      <a href="mailto:otherot@gmail.com" class="hero-link" aria-label="Email: otherot@gmail.com" title="otherot@gmail.com">
         <img src="icons/mail.svg" alt="" class="icon">
       </a>
-      <a href="https://t.me/otherot" class="hero-link" target="_blank" rel="noopener" title="@otherot">
+      <a href="https://t.me/otherot" class="hero-link" target="_blank" rel="noopener" aria-label="Telegram: @otherot" title="@otherot">
         <img src="icons/telegram.svg" alt="" class="icon">
       </a>
-      <a href="https://github.com/otherot" class="hero-link" target="_blank" rel="noopener" title="github.com/otherot">
+      <a href="https://github.com/otherot" class="hero-link" target="_blank" rel="noopener" aria-label="GitHub: otherot" title="github.com/otherot">
         <img src="icons/github.svg" alt="" class="icon">
       </a>
-      <a href="https://www.linkedin.com/in/otherot" class="hero-link" target="_blank" rel="noopener" title="LinkedIn">
+      <a href="https://www.linkedin.com/in/otherot" class="hero-link" target="_blank" rel="noopener" aria-label="LinkedIn: otherot" title="LinkedIn">
         <img src="icons/linkedin.svg" alt="" class="icon">
       </a>
     </div>
@@ -258,7 +288,7 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
 </section>
 
 <!-- ── Experience ── -->
-<section class="section" id="experience">
+<section class="section section--alt" id="experience">
   <div class="container reveal">
     <h2 class="section-title" data-i18n="nav_experience">Experience</h2>
     <div class="timeline">
@@ -280,7 +310,7 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
           <div class="tl-hl-title" data-i18n="hl_title">Key Results</div>
           <ul class="tl-hl-list">
             <li data-i18n="exp1_b4">Established SRE standards for GPU-backed AI services: fault tolerance, autoscaling, and end-to-end observability</li>
-            <li><span data-i18n="exp1_b6">Migrated of ELK clusters to OpenSearch (Geo-redundancy, zero downtime)</span> <a href="articles/elk-to-opensearch-migration.html" class="tl-article-link" data-i18n="exp1_b6_link">Read the deep dive →</a></li>
+            <li data-i18n="exp1_b6">Migrated ELK clusters to OpenSearch with geo-redundancy and zero downtime</li>
             <li data-i18n="exp1_b7">Re-architected metrics infrastructure from Prometheus to VictoriaMetrics for improved scalability and retention</li>
           </ul>
         </div>
@@ -385,7 +415,7 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
 </section>
 
 <!-- ── Education ── -->
-<section class="section" id="education">
+<section class="section section--alt" id="education">
   <div class="container reveal">
     <h2 class="section-title" data-i18n="nav_education">Education</h2>
     <div class="edu-card">
@@ -401,6 +431,8 @@ body.custom-cursor-active,body.custom-cursor-active *{cursor:none!important}
   </div>
 </section>
 
+</main>
+
 <!-- ── Footer ── -->
 <footer class="footer">
   <p><span id="footerYear"></span> <span data-i18n="footer_text">Anton Cherkasov. Site Reliability Engineer & Team Lead</span></p>
@@ -413,10 +445,10 @@ const i18n = {
     nav_experience: 'Опыт работы',
     nav_skills: 'Навыки',
     nav_education: 'Образование',
+    skip_link: 'Перейти к содержимому',
     hero_name: 'Черкасов Антон',
     hero_title: 'Site Reliability Engineer & Team Lead',
     hero_tagline: '15+ лет опыта в построении надёжной инфраструктуры и автоматизации',
-    status_line: 'Открыт к переезду в ЕС · SRE Lead / Platform Engineering',
     about_text: 'DevOps/SRE-инженер с более чем 15-летним опытом — от системного администрирования до руководства командой DevOps в крупном банке. Специализируюсь на Kubernetes/OpenShift, CI/CD (Jenkins, ArgoCD), Terraform и Ansible. Обеспечиваю SLA 99.95% для высоконагруженных сервисов Сбера, включая СБОЛ и ИИ-ассистент на базе LLM.',
     stat_exp: '15+',
     stat_exp_label: 'лет опыта',
@@ -433,9 +465,8 @@ const i18n = {
     exp1_b3: 'Координация с командами разработки, QA и безопасности для надёжности релизного процесса',
     exp1_b4: 'Внедрение SRE-практик для GPU-инфраструктуры и ИИ-сервисов: отказоустойчивость, масштабирование и наблюдаемость ML/AI нагрузок',
     exp1_b5: 'Внедрение мер по снижению MTTR и повышению отказоустойчивости',
-    exp1_b6: 'Миграция кластеров ELK в OpenSearch (Георезервирование, zero downtime)',
-    exp1_b6_link: 'Читать разбор →',
-    exp1_b7: 'Миграция системы мониторинга с Prometheus на Victoria Metrics',
+    exp1_b6: 'Миграция кластеров ELK в OpenSearch с георезервированием и без простоя',
+    exp1_b7: 'Перевод инфраструктуры метрик с Prometheus на VictoriaMetrics — выше масштабируемость и глубина хранения',
     exp2_role: 'Senior SRE/DevOps',
     exp2_company: 'Сбер',
     exp2_period: 'декабрь 2021 — ноябрь 2024',
@@ -446,12 +477,12 @@ const i18n = {
     exp2_b5: 'Участие во внедрении ИИ-ассистента на базе LLM в поисковую систему продукта',
     exp2_b6: 'Взаимодействие с командами разработки, QA и безопасности',
     exp2_b7: 'Миграция кластеров с OpenShift на bare-metal Kubernetes',
-    exp2_b8: 'Внедрение Istio для управления трафиком микросервисов',
-    exp2_b9: 'Внедрение HashiCorp Vault для централизованного управления секретами',
+    exp2_b8: 'Внедрение service mesh Istio: mTLS, наблюдаемость и соответствие требованиям банковской безопасности между микросервисами',
+    exp2_b9: 'Перевод управления секретами в HashiCorp Vault: централизованное хранение и автоматическая ротация',
     exp3_role: 'Middle SRE/DevOps',
     exp3_company: 'Сбер',
     exp3_period: 'июнь 2021 — декабрь 2021',
-    exp3_b1: 'Сопровождение и настройка CI/CD пайплайнов (Jenkins)',
+    exp3_b1: 'Настройка и сопровождение CI/CD-пайплайнов (Jenkins, BitBucket, Quality Gates (SAST, OSS))',
     exp3_b2: 'Развёртывание микросервисных приложений в Kubernetes (OpenShift)',
     exp3_b3: 'Поддержка мониторинга (Prometheus, Grafana, Thanos) и логирования (ELK/OpenSearch)',
     exp3_b4: 'Операционная поддержка инфраструктуры в рамках команды',
@@ -492,10 +523,10 @@ const i18n = {
     nav_experience: 'Experience',
     nav_skills: 'Skills',
     nav_education: 'Education',
+    skip_link: 'Skip to content',
     hero_name: 'Anton Cherkasov',
     hero_title: 'Site Reliability Engineer & Team Lead',
     hero_tagline: '15+ years of experience building reliable infrastructure and automation',
-    status_line: 'Open to EU relocation · SRE Lead / Platform Engineering',
     about_text: 'DevOps/SRE engineer with over 15 years of experience — from system administration to leading a DevOps team at a major bank. Specialized in Kubernetes/OpenShift, CI/CD (Jenkins, ArgoCD), Terraform and Ansible. Maintaining 99.95% SLA for Sberbank\'s high-traffic services including SBOL and an LLM-based AI assistant.',
     stat_exp: '15+',
     stat_exp_label: 'years of experience',
@@ -512,8 +543,7 @@ const i18n = {
     exp1_b3: 'Coordinating with development, QA and security teams for reliable release processes',
     exp1_b4: 'Established SRE standards for GPU-backed AI services: fault tolerance, autoscaling, and end-to-end observability',
     exp1_b5: 'Implementing measures to reduce MTTR and improve fault tolerance',
-    exp1_b6: 'Migrated of ELK clusters to OpenSearch (Geo-redundancy, zero downtime)',
-    exp1_b6_link: 'Read the deep dive →',
+    exp1_b6: 'Migrated ELK clusters to OpenSearch with geo-redundancy and zero downtime',
     exp1_b7: 'Re-architected metrics infrastructure from Prometheus to VictoriaMetrics for improved scalability and retention',
     exp2_role: 'Senior SRE/DevOps',
     exp2_company: 'Sberbank',
@@ -604,6 +634,9 @@ function applyLang(lang) {
     heroTitle.setAttribute('aria-label', t.hero_title);
     typeText(heroTitleText, t.hero_title);
   }
+  // Nav labels change width between languages — re-measure the indicator.
+  const activeLink = document.querySelector('.header-nav a.active');
+  if (activeLink) moveNavIndicator(activeLink);
 }
 
 function toggleLang() {
@@ -704,51 +737,18 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeNav();
 });
 
-// ── Site-wide cursor effects: glow + trailing dot/ring cursor ──
-const supportsCustomCursor = !prefersReducedMotion && window.matchMedia('(pointer: fine)').matches;
-if (supportsCustomCursor) {
-  document.body.classList.add('custom-cursor-active');
-
+// ── Site-wide cursor glow ──
+if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
   const cursorGlow = document.getElementById('cursorGlow');
-  const cursorDot = document.getElementById('cursorDot');
-  const cursorRing = document.getElementById('cursorRing');
-
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let ringX = mouseX;
-  let ringY = mouseY;
 
   document.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-    cursorDot.style.opacity = '1';
-    cursorRing.style.opacity = '1';
-    cursorGlow.style.setProperty('--cx', `${mouseX}px`);
-    cursorGlow.style.setProperty('--cy', `${mouseY}px`);
+    cursorGlow.style.setProperty('--cx', `${e.clientX}px`);
+    cursorGlow.style.setProperty('--cy', `${e.clientY}px`);
     cursorGlow.style.opacity = '1';
   });
 
   document.addEventListener('mouseleave', () => {
-    cursorDot.style.opacity = '0';
-    cursorRing.style.opacity = '0';
     cursorGlow.style.opacity = '0';
-  });
-
-  function trailRing() {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-    requestAnimationFrame(trailRing);
-  }
-  requestAnimationFrame(trailRing);
-
-  const hoverSelector = 'a, button, .badge, input, select, textarea, [role="button"]';
-  document.addEventListener('mouseover', e => {
-    if (e.target.closest(hoverSelector)) cursorRing.classList.add('hovered');
-  });
-  document.addEventListener('mouseout', e => {
-    if (e.target.closest(hoverSelector)) cursorRing.classList.remove('hovered');
   });
 }
 
@@ -761,6 +761,7 @@ function updateScrollProgress() {
   scrollProgress.style.width = `${pct}%`;
 }
 window.addEventListener('scroll', updateScrollProgress, { passive: true });
+window.addEventListener('resize', updateScrollProgress);
 
 // ── 3D tilt on hover for cards ──
 function initTilt(selector, maxDeg = 7) {

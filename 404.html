@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page not found · Anton Cherkasov</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/icons/logo.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0d1b2a">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg-primary:#0d1b2a;--bg-card:rgba(21,32,50,.85);
+  --accent:#00e6c7;--accent-dim:rgba(0,230,199,.12);
+  --text-primary:#e0e6ed;--text-secondary:#8892a0;--text-muted:#707b8c;
+  --border:rgba(255,255,255,.06);--radius:10px;
+  --font-mono:'SF Mono','Fira Code',monospace;
+}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.65;-webkit-font-smoothing:antialiased;text-align:center;position:relative;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:28px 28px}
+body::after{content:'';position:fixed;top:12%;left:50%;transform:translateX(-50%);width:700px;height:700px;max-width:100%;border-radius:50%;background:radial-gradient(circle,rgba(0,230,199,.1) 0%,transparent 70%);pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:520px}
+.code{font-family:var(--font-mono);font-size:clamp(3.4rem,14vw,6rem);font-weight:800;letter-spacing:-.03em;line-height:1;background:linear-gradient(135deg,var(--text-primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.title{font-size:clamp(1.1rem,3vw,1.4rem);font-weight:700;margin-top:.8rem}
+.text{color:var(--text-secondary);margin-top:.7rem;font-size:.98rem}
+.log{display:inline-block;margin-top:1.6rem;padding:.7rem 1.1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);font-family:var(--font-mono);font-size:.78rem;color:var(--text-muted);text-align:left;max-width:100%;overflow-x:auto;white-space:nowrap}
+.log b{color:#ffb733;font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:2rem}
+.btn{display:inline-block;padding:.65rem 1.3rem;border-radius:var(--radius);text-decoration:none;font-size:.9rem;font-weight:600;transition:background .2s,border-color .2s,color .2s}
+.btn--primary{background:var(--accent-dim);border:1px solid rgba(0,230,199,.35);color:var(--accent)}
+.btn--primary:hover{background:rgba(0,230,199,.22);border-color:var(--accent)}
+.btn--ghost{border:1px solid var(--border);color:var(--text-secondary)}
+.btn--ghost:hover{border-color:var(--text-muted);color:var(--text-primary)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="code">404</div>
+  <h1 class="title" id="title">This page is not in the cluster</h1>
+  <p class="text" id="text">The route exists in nobody's config. Nothing is on fire — the page simply isn't here.</p>
+  <div class="log" aria-hidden="true"><b>WARN</b> route not found &middot; falling back to <span id="path">/</span></div>
+  <div class="actions">
+    <a class="btn btn--primary" href="/" id="home">Back to portfolio</a>
+    <a class="btn btn--ghost" href="mailto:otherot@gmail.com" id="mail">Email me</a>
+  </div>
+</div>
+<script>
+const copy = {
+  ru: {
+    lang: 'ru',
+    title: 'Такой страницы нет в кластере',
+    text: 'Этого маршрута нет ни в одном конфиге. Ничего не горит — страницы просто нет.',
+    home: 'Вернуться на главную',
+    mail: 'Написать мне'
+  },
+  en: {
+    lang: 'en',
+    title: 'This page is not in the cluster',
+    text: "The route exists in nobody's config. Nothing is on fire — the page simply isn't here.",
+    home: 'Back to portfolio',
+    mail: 'Email me'
+  }
+};
+// Same storage key as the portfolio, so the 404 speaks the visitor's language.
+const t = copy[localStorage.getItem('portfolio-lang') === 'ru' ? 'ru' : 'en'];
+document.documentElement.lang = t.lang;
+document.getElementById('title').textContent = t.title;
+document.getElementById('text').textContent = t.text;
+document.getElementById('home').textContent = t.home;
+document.getElementById('mail').textContent = t.mail;
+document.getElementById('path').textContent = location.pathname;
+</script>
+</body>
+</html>
