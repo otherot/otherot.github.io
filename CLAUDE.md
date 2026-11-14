@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A personal single-page portfolio site (Anton Cherkasov — SRE / Team Lead), deployed via GitHub Pages at `https://otherot.github.io/`. Pure HTML/CSS/vanilla JS — no frameworks, no build step. The one dev dependency (Playwright) exists only to render the Open Graph cards offline.
+A personal single-page portfolio site (Anton Cherkasov — SRE / Team Lead), deployed via GitHub Pages at `https://otherot.github.io/` — the primary, recruiter-facing address. A copy is served from a VPS at `https://otherot.site/`. Pure HTML/CSS/vanilla JS — no frameworks, no build step. The one dev dependency (Playwright) exists only to render the Open Graph cards offline.
 
 ## Architecture
 
@@ -45,4 +45,8 @@ python3 -m http.server 8080
 
 ## Deployment
 
-Static hosting via GitHub Pages, deployed from the `main` branch root (`/`). Pushing to `main` is the deploy — there is no CI/build pipeline.
+Pushing to `main` is the deploy, to two places:
+- **VPS** (`otherot.site`): `.github/workflows/deploy.yml` copies an allowlist of files (`index.html`, `404.html`, `robots.txt`, `sitemap.xml`, `icons/`, `images/`, `resume/`) and rsyncs it to `/var/www/otherot.site` as user `deploy`, whose key is pinned to `rrsync`. A new top-level file or directory must be added to that allowlist to get published. nginx serves it on `127.0.0.1:8443` behind Xray REALITY on :443, so its CSP lives in the nginx config, not here.
+- **GitHub Pages**, from the `main` branch root — the primary site.
+
+Absolute URLs (canonical, `og:*`, JSON-LD, `robots.txt`, `sitemap.xml`) stay on `https://otherot.github.io/`, so the VPS copy is a mirror pointing back to it. Don't switch them to otherot.site.

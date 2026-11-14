@@ -38,12 +38,8 @@ Regenerating the Open Graph card (needs `npm install` once, for Playwright):
 npm run og
 ```
 
-## Enabling GitHub Pages
+## Deployment
 
-1. Go to your repository on GitHub: `https://github.com/otherot/otherot.github.io`
-2. Click **Settings** → **Pages** (in the left sidebar)
-3. Under "Build and deployment" → **Source**: select **Deploy from a branch**
-4. Under **Branch**, select `main` and choose the `/ (root)` folder
-5. Click **Save**
+The site is published by GitHub Pages at `https://otherot.github.io/` from the `main` branch root.
 
-Your site will be published at `https://otherot.github.io/` within 1-2 minutes.
+Every push to `main` also runs `.github/workflows/deploy.yml`, which rsyncs the published files to a VPS mirror at `https://otherot.site/` (`/var/www/otherot.site`, nginx). Canonical URLs point to otherot.github.io. The workflow needs three repository secrets: `DEPLOY_HOST`, `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS`.
